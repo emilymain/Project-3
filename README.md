@@ -6,7 +6,11 @@ HomeMe is a web application for renters in the Greater Los Angeles area who need
 
 ## MVP 
 
-
+This application will allow a user to create an account or login through OAuth via Google.com.
+After an account has been created, the user can search for an apartment using data queried from the Zillow API.
+This data will be rendered through an interactive map on the website for visual aesthetic purposes.
+The application provides further functionality whereby the user can invite potential roommates to join a group.
+The functionality of the group feature will facilitate easy communication via a chatroom.
 
 ### Technologies Used
 
