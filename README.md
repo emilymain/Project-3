@@ -4,7 +4,7 @@
 
 HomeMe is a web application for renters in the Greater Los Angeles area who need a more streamlined housing search application with their roommates. Unlike RadPad and Zillow, our app lets users communicate with their roommates/housemates during the search process within the same web application avoiding the back and forth email chains.
 
-## MVP 
+## MVP
 
 This application will allow a user to create an account or login through OAuth via Google.com.
 After an account has been created, the user can search for an apartment using data queried from the Zillow API.
@@ -14,9 +14,9 @@ The functionality of the group feature will facilitate easy communication via a 
 
 ### Technologies Used
 
-1. Javascript 
+1. Javascript
 2. HTML5
-3. CSS3 
+3. CSS3
 4. Node.js
 5. Express.js
 6. MongoDB
@@ -30,7 +30,7 @@ The functionality of the group feature will facilitate easy communication via a 
 [Link to Pitch Deck](https://docs.google.com/presentation/d/1xGIqvYHterTJOM0Hx6fqo1-Ix0OLbg5R0gXRKM2f8IY/edit?usp=sharing)
 
 ---
-### Trello Board 
+### Trello Board
 
 [Link to Trello](https://trello.com/b/yGCemAqi/project-3)
 
