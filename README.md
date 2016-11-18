@@ -26,7 +26,7 @@ HomeMe is a web application for renters in the Greater Los Angeles area who need
 [Link to Trello](https://trello.com/b/yGCemAqi/project-3)
 
 ---
-### Wireframes & ERD 
+### Wireframes
 
 ![](http://imgur.com/mq0FTIU.png)
 ![](http://imgur.com/qKqoW6o.png)
@@ -34,4 +34,7 @@ HomeMe is a web application for renters in the Greater Los Angeles area who need
 ![](http://imgur.com/8MhX9hD.png)
 ![](http://imgur.com/0cc0Ex5.png)
 
+### ERD
+
+![](http://imgur.com/kV3YeyB.png)
 
