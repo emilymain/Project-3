@@ -21,6 +21,11 @@ HomeMe is a web application for renters in the Greater Los Angeles area who need
 9. Bootstrap
 
 ---
+### Pitch Deck
+
+[Link to Pitch Deck](https://docs.google.com/presentation/d/1xGIqvYHterTJOM0Hx6fqo1-Ix0OLbg5R0gXRKM2f8IY/edit?usp=sharing)
+
+---
 ### Trello Board 
 
 [Link to Trello](https://trello.com/b/yGCemAqi/project-3)
