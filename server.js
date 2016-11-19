@@ -9,6 +9,17 @@ var index = require('./config/routes');
 
 var app = express();
 
+var Zillow = require('node-zillow');
+
+var zillow = new Zillow(process.env.ZILLOW_KEY, {});
+
+zillow.get('GetRegionChildren', {
+  'state': 'ca',
+  'city': 'Santa Monica'
+}).then(function(data) {
+  console.log(JSON.stringify(data, null, 2));
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
