@@ -15,8 +15,12 @@
     "express-session": "^1.14.2",
     "mongoose": "^4.6.8",
     "morgan": "~1.7.0",
+<<<<<<< HEAD
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
+=======
+    "node-zillow": "^1.0.1",
+>>>>>>> d8e3facdfd7aea38470a4a2722a798e89f3b9b4e
     "serve-favicon": "~2.3.0"
   }
 }
