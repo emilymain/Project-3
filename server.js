@@ -17,7 +17,9 @@ zillow.get('GetRegionChildren', {
   'state': 'ca',
   'city': 'Santa Monica'
 }).then(function(data) {
-  console.log(JSON.stringify(data, null, 2));
+  // console.log(JSON.stringify(data, null, 2));
+  console.log(data["response"]["list"]["region"][0]["latitude"]);
+  console.log(data["response"]["list"]["region"][0]["longitude"]);
 });
 
 // view engine setup
