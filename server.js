@@ -15,11 +15,11 @@ var zillow = new Zillow(process.env.ZILLOW_KEY, {});
 
 zillow.get('GetRegionChildren', {
   'state': 'ca',
-  'city': 'Santa Monica'
+  'city': 'santa monica'
 }).then(function(data) {
   // console.log(JSON.stringify(data, null, 2));
-  console.log(data["response"]["list"]["region"][0]["latitude"]);
-  console.log(data["response"]["list"]["region"][0]["longitude"]);
+  console.log(data["response"]["list"]["region"][4]["latitude"]);
+  console.log(data["response"]["list"]["region"][5]["longitude"]);
 });
 
 // view engine setup
