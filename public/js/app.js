@@ -29,9 +29,24 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
     var pets = $('#pets').val();
     var furnished = $('#furnished').val();
 
-    $.post( "http://homeme-api.herokuapp.com/listing", { "address": address, "zipcode": zipcode, "price": price, "bedrooms": bedrooms, "bathrooms": bathrooms, "duration": duration, "pets": pets, "furnished": furnished }, "json");
+		var params = {
+			"address": address,
+			"zipcode": zipcode,
+			"price": price,
+			"bedrooms": bedrooms,
+			"bathrooms": bathrooms,
+			"duration": duration,
+			"pets": pets,
+			"furnished": furnished
+		 }
+
+		 console.log(params);
+
+    $.post( "http://homeme-api.herokuapp.com/listing", params, "json");
 
     event.preventDefault();
+
+
   })
 
 });
