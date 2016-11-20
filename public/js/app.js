@@ -16,4 +16,22 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
   var marker = L.marker([34.0195, -118.4912]).addTo(mymap);
 
+	$('#submit').click(function(event) {
+
+    console.log('jQuery works')
+
+    var address = $('#address').val();
+    var zipcode = $('#zipcode').val();
+    var price = $('#price').val();
+    var bedrooms = $('#bedrooms').val();
+    var bathrooms = $('#bathrooms').val();
+    var duration = $('#duration').val();
+    var pets = $('#pets').val();
+    var furnished = $('#furnished').val();
+
+    $.post( "http://homeme-api.herokuapp.com/listing", { "address": address, "zipcode": zipcode, "price": price, "bedrooms": bedrooms, "bathrooms": bathrooms, "duration": duration, "pets": pets, "furnished": furnished }, "json");
+
+    event.preventDefault();
+  })
+
 });
