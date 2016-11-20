@@ -2,13 +2,8 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="animate.min.css">
     <link rel='stylesheet' href='/css/style.css' />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script rel='javascript' src='/js/app.js'></script>
   </head>
   <body>
@@ -22,44 +17,6 @@
       <li><a href="/auth/google">Login with Google</a></li>
       <% } %>
     </ul>
-
-    <div id="mapid" style="width: 800px; height: 400px;"></div>
-
-    <form>
-      <div class="form-group">
-        <label for="formGroupExampleInput">address</label>
-        <input type="text" class="form-control" id="address" placeholder="string">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">zipcode</label>
-        <input type="text" class="form-control" id="zipcode" placeholder="string">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput3">price</label>
-        <input type="text" class="form-control" id="price" placeholder="integer (no commas)">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">bedrooms</label>
-        <input type="text" class="form-control" id="bedrooms" placeholder="number">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">bathrooms</label>
-        <input type="text" class="form-control" id="bathrooms" placeholder="number">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">duration</label>
-        <input type="text" class="form-control" id="duration" placeholder="number">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">pets</label>
-        <input type="text" class="form-control" id="pets" placeholder="true / false">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">furnished</label>
-        <input type="text" class="form-control" id="furnished" placeholder="true / false">
-      </div>
-      <button type="button" class="btn btn-primary" id="submit">AJAX it in there</button>
-    </form>
 
   </body>
 </html>
