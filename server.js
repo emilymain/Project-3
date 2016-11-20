@@ -23,7 +23,7 @@ require('./config/passport');
 
 // Michael's zillow code for map
 var zillow = new Zillow(process.env.ZILLOW_KEY, {});
-//
+
 zillow.get('GetRegionChildren', {
   'state': 'ca',
   'city': 'santa monica'
