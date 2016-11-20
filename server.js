@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var index = require('./config/routes');
-var Zillow = require('node-zillow');
+// var Zillow = require('node-zillow');
 
 
 // load the env var
@@ -22,16 +22,16 @@ require('./config/database');
 require('./config/passport');
 
 // Michael's zillow code for map
-var zillow = new Zillow(process.env.ZILLOW_KEY, {});
-
-zillow.get('GetRegionChildren', {
-  'state': 'ca',
-  'city': 'santa monica'
-}).then(function(data) {
-  // console.log(JSON.stringify(data, null, 2));
-  console.log(data["response"]["list"]["region"][4]["latitude"]);
-  console.log(data["response"]["list"]["region"][4]["longitude"]);
-});
+// var zillow = new Zillow(process.env.ZILLOW_KEY, {});
+//
+// zillow.get('GetRegionChildren', {
+//   'state': 'ca',
+//   'city': 'santa monica'
+// }).then(function(data) {
+//   // console.log(JSON.stringify(data, null, 2));
+//   console.log(data["response"]["list"]["region"][4]["latitude"]);
+//   console.log(data["response"]["list"]["region"][4]["longitude"]);
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
