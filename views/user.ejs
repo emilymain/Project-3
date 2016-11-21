@@ -3,14 +3,14 @@
   <head>
     <title><%= title %></title>
     <%- include('./partials/head') %>
-    <script rel='javascript' src='/js/user.js'></script>
+    <link rel='stylesheet' href='/css/user.css'/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
   </head>
   <body>
     <%- include('./partials/navbar.ejs')  %>
 
-    <div class="container" id="mapid"></div>
+    <div class="container" id="map"></div>
 
     <form class="container">
       <div class="form-group">
@@ -55,6 +55,9 @@
       </div>
       <button type="button" class="btn btn-primary" id="submit">AJAX it in there</button>
     </form>
-
+    <script rel='javascript' src='/js/user.js'></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjhPiDnmTAQy95uLaqIr9ONbyAVMC3myw&callback=initMap">
+    </script>
   </body>
 </html>

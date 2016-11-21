@@ -1,22 +1,22 @@
 // This page includes the javscript for the front-end
 
-$(function() {
+// $(function() {
 
 	var mongoId = "583337a4b416e70012a50a5d";
 
 	console.log('javascript is working');
 
-	var mymap = L.map('mapid').setView([34.0195, -118.4912], 13);
-
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'mapbox.streets'
-		}).addTo(mymap);
-
-	var marker = L.marker([34.0195, -118.4912]).addTo(mymap);
+	function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
 
 	$('#submit').click(function(event) {
 
@@ -60,4 +60,4 @@ $(function() {
 	}, "json");
 
 // end of document.ready function
-});
+// });
