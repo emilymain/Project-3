@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var index = require('./config/routes');
+var io = require('socket.io');
 // var Zillow = require('node-zillow');
 
 
