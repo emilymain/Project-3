@@ -2,6 +2,8 @@
 
 $(function() {
 
+	var mongoId = "583337a4b416e70012a50a5d";
+
 	console.log('javascript is working');
 
 	var mymap = L.map('mapid').setView([34.0195, -118.4912], 13);
@@ -51,8 +53,10 @@ $(function() {
   });
 
 	console.log('foo');
-	$.get("http://homeme-api.herokuapp.com/listings", {"id": "5832983e15e6ca0012836b24"}, function(data) {
-		console.log(data);
+	$.get("http://homeme-api.herokuapp.com/listings", {"id": mongoId}, function(data) {
+		console.log(data.neighborhood);
+		console.log(data.latitude);
+		console.log(data.longitude);
 	}, "json");
 
 // end of document.ready function
