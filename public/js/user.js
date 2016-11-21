@@ -52,7 +52,7 @@ $(function() {
 
 	console.log('foo');
 	$.get("http://homeme-api.herokuapp.com/listings", {"id": "5832983e15e6ca0012836b24"}, function(data) {
-		console.log(data.neighborhood);
+		console.log(data);
 	}, "json");
 
 // end of document.ready function
