@@ -19,7 +19,8 @@ $(function() {
 	$('#submit').click(function(event) {
 
     console.log('jQuery works')
-
+		var city = $('#city').val();
+		var state = $('#state').val();
     var address = $('#address').val();
     var zipcode = $('#zipcode').val();
     var price = $('#price').val();
@@ -30,6 +31,8 @@ $(function() {
     var furnished = $('#furnished').val();
 
 		var params = {
+			"city": city,
+			"state": state,
 			"address": address,
 			"zipcode": zipcode,
 			"price": price,
@@ -42,12 +45,15 @@ $(function() {
 
 		 console.log(params);
 
-    $.post( "http://homeme-api.herokuapp.com/listing", params, "json");
+    $.post( "http://homeme-api.herokuapp.com/listings", params, "json");
 
     event.preventDefault();
+  });
 
-
-  })
+	console.log('foo');
+	$.get("http://homeme-api.herokuapp.com/listings", {"id": "5832983e15e6ca0012836b24"}, function(data) {
+		console.log(data);
+	}, "json");
 
 // end of document.ready function
 });
