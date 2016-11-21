@@ -9,10 +9,14 @@
       <% if (user) { %>
         Hello, <%= user.name %>
         <br>
+        <a href="/users">Main</a>
+        <br>
+        <a href="/users/group">Group</a>
+        <br>
         <a href="/auth/google">Logout</a>
-        <% } else { %>
-          <a href="/auth/google">Login with Google</a>
-          <% } %>
-        </p>
+      <% } else { %>
+        <a href="/auth/google">Login with Google</a>
+      <% } %>
+    </p>
   </div>
 </nav>
