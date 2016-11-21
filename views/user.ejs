@@ -50,6 +50,15 @@
         <label for="formGroupExampleInput4">Furnished</label>
         <input type="text" class="form-control" id="furnished" placeholder="true / false">
       </div>
+      <!-- added file upload below  -->
+      <div>
+        <form method="post" enctype="multipart/form-data">
+          <label for="file">Select your image:</label>
+          <input type="file" name="image" id="image" />
+          <span>Supported files: jpg, jpeg, png.</span>
+          <button type="submit">upload</button>
+        </form>
+      </div>
       <button type="button" class="btn btn-primary" id="submit">AJAX it in there</button>
     </form>
 

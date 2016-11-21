@@ -1,5 +1,9 @@
 var mongoose = require('mongoose');
 
+//trying to upload images
+var multer = require ('multer')
+var upload = multer({dest: 'public/uploads/'})
+//
 var userSchema = new mongoose.Schema({
   name: String,
   email: String,

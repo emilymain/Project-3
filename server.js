@@ -8,6 +8,9 @@ var session = require('express-session');
 var passport = require('passport');
 var index = require('./config/routes');
 var io = require('socket.io');
+// //not sure if these below are necessary, following a markdown for image uploade
+// var server = require('http').createServer(app);
+// var controllers = require('./controllers');
 // var Zillow = require('node-zillow');
 
 
