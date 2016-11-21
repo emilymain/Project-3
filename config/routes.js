@@ -7,13 +7,31 @@ router.get('/', function(req, res, next) {
   res.render('index.ejs', { title: 'HomeMe', user: req.user });
 });
 
-router.get('/users', function(req, res, next) {
+router.get('/users/newlisting', function(req, res, next) {
   res.render('user.ejs', { title: 'HomeMe', user: req.user });
+});
+
+router.get('/users', function(req, res, next) {
+  res.render('newlisting.ejs', { title: 'HomeMe', user: req.user});
 });
 
 router.get('/users/group', function(req, res, next) {
   res.render('group.ejs', { title: 'HomeMe', user: req.user});
-})
+});
+
+// /* GET root path. */
+// router.route('/')
+//   .get(pagesCtrl.welcome)
+//
+// // user home page after logging in
+// router.route('/user')
+//   .get(usersCtrl.index)
+// // user page for posting the listing
+// router.route('/user/postlisting')
+//   .get(usersCtrl.postListing)
+// // user page for group chat
+// router.route('/user/group')
+//   .get(usersCtrl.groupChat)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
@@ -33,7 +51,6 @@ router.get('/oauth2callback', passport.authenticate(
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
-  // antonio: when i try to logout it sends me back to 'choose an account'; if i url to localhost:3000 i'm still logged in
 });
 
 module.exports = router;
