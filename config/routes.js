@@ -7,15 +7,15 @@ router.get('/', function(req, res, next) {
   res.render('index.ejs', { title: 'HomeMe', user: req.user });
 });
 
-router.get('/users/newlisting', function(req, res, next) {
-  res.render('user.ejs', { title: 'HomeMe', user: req.user });
+router.get('/listings/new', function(req, res, next) {
+  res.render('newlisting.ejs', { title: 'HomeMe', user: req.user });
 });
 
 router.get('/users', function(req, res, next) {
-  res.render('newlisting.ejs', { title: 'HomeMe', user: req.user});
+  res.render('user.ejs', { title: 'HomeMe', user: req.user});
 });
 
-router.get('/users/group', function(req, res, next) {
+router.get('/groups', function(req, res, next) {
   res.render('group.ejs', { title: 'HomeMe', user: req.user});
 });
 

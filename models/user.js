@@ -4,7 +4,7 @@ var userSchema = new mongoose.Schema({
   name: String,
   email: String,
   googleId: String,
-  favorites: [],
+  favorites: Array,
   created: {type: Date, default: Date.now}
 });
 
