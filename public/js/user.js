@@ -19,7 +19,8 @@ $(function() {
 	$('#submit').click(function(event) {
 
     console.log('jQuery works')
-
+		var city = $('#city').val();
+		var state = $('#state').val();
     var address = $('#address').val();
     var zipcode = $('#zipcode').val();
     var price = $('#price').val();
@@ -30,6 +31,8 @@ $(function() {
     var furnished = $('#furnished').val();
 
 		var params = {
+			"city": city,
+			"state": state,
 			"address": address,
 			"zipcode": zipcode,
 			"price": price,
