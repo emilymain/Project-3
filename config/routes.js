@@ -7,6 +7,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'HomeMe', user: req.user });
 });
 
+router.get('/user', function(req, res, next) {
+  res.render('user', { title: 'HomeMe', user: req.user });
+});
+
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',
@@ -16,7 +20,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/',
+    successRedirect: '/user',
     failureRedirect: '/'
   }
 ));
