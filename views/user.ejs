@@ -1,50 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>sup</title>
-    <link rel='stylesheet' href='/css/user.css' />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-    <script rel='javascript' src='/js/user.js'></script>
+    <title><%= title %></title>
+    <%- include('./partials/head') %>
   </head>
   <body>
+    <%- include('./partials/navbar.ejs')  %>
 
-    <div id="mapid" style="width: 800px; height: 400px;"></div>
+    <div class="container" id="mapid" style="width: 800px; height: 400px;"></div>
 
-    <form>
+    <form class="container">
       <div class="form-group">
-        <label for="formGroupExampleInput">address</label>
+        <label for="formGroupExampleInput">Address</label>
         <input type="text" class="form-control" id="address" placeholder="string">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput2">zipcode</label>
+        <label for="formGroupExampleInput2">Zip Code</label>
         <input type="text" class="form-control" id="zipcode" placeholder="string">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput3">price</label>
+        <label for="formGroupExampleInput3">Price</label>
         <input type="text" class="form-control" id="price" placeholder="integer (no commas)">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput4">bedrooms</label>
+        <label for="formGroupExampleInput4">Bedrooms</label>
         <input type="text" class="form-control" id="bedrooms" placeholder="number">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput4">bathrooms</label>
+        <label for="formGroupExampleInput4">Bathrooms</label>
         <input type="text" class="form-control" id="bathrooms" placeholder="number">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput4">duration</label>
+        <label for="formGroupExampleInput4">Duration</label>
         <input type="text" class="form-control" id="duration" placeholder="number">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput4">pets</label>
+        <label for="formGroupExampleInput4">Pets</label>
         <input type="text" class="form-control" id="pets" placeholder="true / false">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput4">furnished</label>
+        <label for="formGroupExampleInput4">Furnished</label>
         <input type="text" class="form-control" id="furnished" placeholder="true / false">
       </div>
       <button type="button" class="btn btn-primary" id="submit">AJAX it in there</button>

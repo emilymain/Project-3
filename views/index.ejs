@@ -9,12 +9,6 @@
   <body>
     <%- include('./partials/navbar.ejs')  %>
     <h1><%= title %></h1>
-    <ul>
-      <% if (user) { %>
-      <li><a href="/logout">Logout</a></li>
-      <% } else { %>
-      <li><a href="/auth/google">Login with Google</a></li>
-      <% } %>
-    </ul>
+
   </body>
 </html>
