@@ -42,7 +42,7 @@ $(function() {
 
 		 console.log(params);
 
-    $.post( "http://homeme-api.herokuapp.com/listing", params, "json");
+    $.post( "http://homeme-api.herokuapp.com/listings", params, "json");
 
     event.preventDefault();
 
