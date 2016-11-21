@@ -1,11 +1,11 @@
 var User = require('../models/user');
 
 module.exports = {
-  index: index
+  index: index,
 };
 
 function index(req, res) {
-    Student.find({}, function(err, users) {
+    User.find({}, function(err, users) {
       if (err) return res.status(err.statusCode || 500).json(err);
       res.json(users);
     });
