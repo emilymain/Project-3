@@ -30,7 +30,7 @@ require('./config/passport');
 // }).then(function(data) {
 //   // console.log(JSON.stringify(data, null, 2));
 //   console.log(data["response"]["list"]["region"][4]["latitude"]);
-//   console.log(data["response"]["list"]["region"][5]["longitude"]);
+//   console.log(data["response"]["list"]["region"][4]["longitude"]);
 // });
 
 // view engine setup

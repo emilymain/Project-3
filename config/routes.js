@@ -7,6 +7,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'HomeMe', user: req.user });
 });
 
+router.get('/user', function(req, res, next) {
+  res.render('user', {  });
+});
+
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',
