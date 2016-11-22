@@ -2,6 +2,7 @@ var searchResult = [];
 // 34.0129821
 // -118.495196
 console.log('javascript is working');
+var uluru;
 
 function initMap() {
 	return new google.maps.Map($('#map')[0], {
@@ -16,13 +17,14 @@ function populateMap(params) {
 	$.get("http://localhost:3000/api/listings", {}, function (data) {
 		for (var i = 0; i < data.length; i++) {
 			if (
-				data[i].price <= params.maxPrice &&
-				data[i].price >= params.minPrice
-				// &&
-				// data[i].bedrooms === params.bedrooms &&
-				// data[i].bathrooms === params.bathrooms &&
-				// data[i].pets === params.pets &&
-				// data[i].furnished === params.furnished &&
+        data[i].city === params.city
+				// || data[i].price <= params.minPrice
+				// || data[i].price >= params.maxPrice
+				// || data[i].bedrooms === params.bedrooms
+				// || data[i].bathrooms === params.bathrooms
+				// || data[i].duration === params.duration
+				// || data[i].pets === params.pets
+				// || data[i].furnished === params.furnished
 			) {
 				var uluru = {
 					lat: data[i].latitude,
@@ -40,10 +42,11 @@ function populateMap(params) {
 		console.log(searchResult);
 	}, "json");
   searchResult = [];
-};
+ };
 
 $('#submitSearch').click(function(event) {
   console.log('jQuery works')
+
 	var city = $('#city').val();
 	var minPrice = $('#minPrice').val();
   var maxPrice = $('#maxPrice').val();
