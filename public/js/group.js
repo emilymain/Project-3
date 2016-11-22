@@ -14,7 +14,7 @@ $(function() {
 	$name = $('#name');
 	$m = $('#m');
 	$form = $('#form');
-	$messages = $('#messages')
+	$messages = $('#messages');
 
 	// Grab all todos from our db
   $.ajax({
@@ -36,8 +36,8 @@ $(function() {
 	$form.on('submit', function(evt) {
 		// Stop the default behavior from clicking on the submit button.
 		evt.preventDefault();
-		var Message = {
-			username: $name.val(),
+		var message = {
+			username: $('span').attr('id'),
 			message: $m.val()
 		}
 
@@ -45,7 +45,7 @@ $(function() {
 		$.ajax({
 			method: "POST",
 			url: "/api/group",
-			data: Message
+			data: message
 		}).then(
 			function(jsonMessage) {
 				console.log("Success: ", jsonMessage);

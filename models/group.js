@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var groupSchema = new mongoose.Schema({
   // name: { type: String, unique: true},
   // favorites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Listing'}],
-  // users: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+  // username: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 
   username: String,
   message: String
