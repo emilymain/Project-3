@@ -8,12 +8,15 @@ var session = require('express-session');
 var passport = require('passport');
 var index = require('./config/routes');
 var io = require('socket.io');
+var aws = require('aws-sdk');
+// var Zillow = require('node-zillow');
 
 
 // load the env var
 require('dotenv').load();
 
 var app = express();
+var S3_BUCKET = process.env.S3_BUCKET_NAME;
 
 // connect to the MongoDB with mongoose
 require('./config/database');
@@ -21,11 +24,24 @@ require('./config/database');
 // configure passport
 require('./config/passport');
 
+// Michael's zillow code for map
+// var zillow = new Zillow(process.env.ZILLOW_KEY, {});
+//
+// zillow.get('GetRegionChildren', {
+//   'state': 'ca',
+//   'city': 'santa monica'
+// }).then(function(data) {
+//   // console.log(JSON.stringify(data, null, 2));
+//   console.log(data["response"]["list"]["region"][4]["latitude"]);
+//   console.log(data["response"]["list"]["region"][4]["longitude"]);
+// });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,6 +56,32 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
+app.get('/sign-s3', (req, res) => {
+  const s3 = new aws.S3();
+  const fileName = req.query['file-name'];
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

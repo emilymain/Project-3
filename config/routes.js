@@ -43,7 +43,8 @@ router.post('/api/listings', function(req, res, next) {
     bathrooms: req.body.bathrooms,
     duration: req.body.duration,
     pets: req.body.pets,
-    furnished: req.body.furnished
+    furnished: req.body.furnished,
+    imageurl: req.body.imageurl    
   }
   geocoder.geocode(newListing.address + ", " + newListing.city + ", " + newListing.state + " " + newListing.zipcode)
   .then(function(data) {
