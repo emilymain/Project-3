@@ -1,9 +1,9 @@
 var express = require('express');
-var router  = new express.Router();
-var Listing = require('../models/listing');
+// var router  = new express.Router();
 var passport = require('passport');
 var NodeGeocoder = require('node-geocoder');
 var router = express.Router();
+var Listing = require('../models/listings');
 
 var options = {
   provider: 'google',

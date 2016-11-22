@@ -1,5 +1,4 @@
 var mongoose = require('./database');
-var Listing = require('../models/listing');
 
 var listings = [
   { // 0
