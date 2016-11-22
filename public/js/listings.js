@@ -11,7 +11,7 @@ function initMap() {
   map = new google.maps.Map($('#map')[0], {
     zoom: 12,
     center: center,
-    mapTypeId: 'terrain'
+    mapTypeId: 'roadmap'
   });
 
   // This event listener will call addMarker() when the map is clicked.
@@ -40,16 +40,17 @@ function initMap() {
     }
 
     $.get("http://localhost:3000/api/listings", {}, function(data) {
+			console.log(data[0])
       for (var i = 0; i < data.length; i++) {
         if (
           data[i].city === params.city
-          // || data[i].price <= params.minPrice
-          // || data[i].price >= params.maxPrice
-          // || data[i].bedrooms === params.bedrooms
-          // || data[i].bathrooms === params.bathrooms
-          // || data[i].duration === params.duration
-          // || data[i].pets === params.pets
-          // || data[i].furnished === params.furnished
+          // && data[i].price >= params.minPrice
+          // && data[i].price <= params.maxPrice
+          // && data[i].bedrooms === params.bedrooms
+          // && data[i].bathrooms === params.bathrooms
+          // && data[i].duration === params.duration
+          // && data[i].pets === params.pets
+          // && data[i].furnished === params.furnished
         ) {
           searchResult.push(data[i])
           var latLng = {
