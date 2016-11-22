@@ -53,8 +53,12 @@
         <label for="formGroupExampleInput4">Furnished</label>
         <input type="text" class="form-control" id="furnished" placeholder="true / false">
       </div>
+      <input type="hidden" id="imageurl" name="imageurl" value="/images/default.png">
       <button type="button" class="btn btn-primary" id="submitListing">AJAX it in there</button>
     </form>
+    <input type="file" id="file-input">
+      <p id="status">Please select a file</p>
+      <img id="preview" src="/images/default.png">
     <script rel='javascript' src='/js/newlisting.js'></script>
   </body>
 </html>
