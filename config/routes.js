@@ -15,8 +15,8 @@ var geocoder = NodeGeocoder(options);
 
 // require controllers
 var welcomeController = require('../controllers/welcome');
-var listingController = require('../controllers/listings');
-var groupController = require('../controllers/groups');
+var listingsController = require('../controllers/listings');
+var groupsController = require('../controllers/groups');
 
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
@@ -77,21 +77,28 @@ router.delete('/api/listings', function(req, res, next) {
 });
 
 
+function authenticatedUser(req, res, next) {
+  // if user authenticated, continue to next execution
+  if(req.isAuthenticated()) return next();
+  // otherwise always redirect to root route
+  res.redirect('/');
+}
+
 /* GET root path. */
 router.route('/')
   .get(welcomeController.welcome)
 
 // first page upon logging in
 router.route('/listings')
-  .get(listingController.index)
+  .get(authenticatedUser, listingsController.index)
 
 // route to post a new listing
 router.route('/listings/new')
-  .get(listingController.newListing)
+  .get(authenticatedUser, listingsController.newListing)
 
 // route to see your group chat
 router.route('/group')
-  .get(groupController.show)
+  .get(authenticatedUser, groupsController.show)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
