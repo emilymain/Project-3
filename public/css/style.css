@@ -7,11 +7,6 @@ a {
   color: #00B7FF;
 }
 
-#mapid {
-  height: 400px;
-  width: 800px;
-}
-
 #messages {
   list-style-type: none;
   margin: 0;
