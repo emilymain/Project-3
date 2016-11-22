@@ -4,8 +4,6 @@ var NodeGeocoder = require('node-geocoder');
 var router = express.Router();
 var Listing = require('../models/listing');
 
-<<<<<<< HEAD
-=======
 var options = {
   provider: 'google',
   httpAdapter: 'https',
@@ -15,26 +13,11 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
->>>>>>> 435280fdb1b5ed3a6e2db58404c55b52a3b8e354
 // require controllers
 var welcomeController = require('../controllers/welcome');
-var listingController = require('../controllers/listings');
-var groupController = require('../controllers/groups');
+var listingsController = require('../controllers/listings');
+var groupsController = require('../controllers/groups');
 
-<<<<<<< HEAD
-/* GET root path. */
-router.route('/')
-  .get(welcomeController.welcome)
-
-// first page upon logging in
-router.route('/listings')
-  .get(listingController.index)
-
-// route to post a new listing
-router.route('/listings/new')
-  .get(listingController.newListing)
-
-=======
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
     Listing.findOne({'_id': req.query.id}, function(err, listing) {
@@ -94,22 +77,28 @@ router.delete('/api/listings', function(req, res, next) {
 });
 
 
+function authenticatedUser(req, res, next) {
+  // if user authenticated, continue to next execution
+  if(req.isAuthenticated()) return next();
+  // otherwise always redirect to root route
+  res.redirect('/');
+}
+
 /* GET root path. */
 router.route('/')
   .get(welcomeController.welcome)
 
 // first page upon logging in
 router.route('/listings')
-  .get(listingController.index)
+  .get(authenticatedUser, listingsController.index)
 
 // route to post a new listing
 router.route('/listings/new')
-  .get(listingController.newListing)
+  .get(authenticatedUser, listingsController.newListing)
 
->>>>>>> 435280fdb1b5ed3a6e2db58404c55b52a3b8e354
 // route to see your group chat
 router.route('/group')
-  .get(groupController.show)
+  .get(authenticatedUser, groupsController.show)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(

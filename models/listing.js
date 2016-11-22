@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-<<<<<<< HEAD
-=======
 
 var listingSchema = new mongoose.Schema({
   formattedAddress: String,
@@ -53,4 +51,3 @@ module.exports = Listing;
 //     "zipcode": "90025",
 //     "provider": "google"
 //   }
->>>>>>> 435280fdb1b5ed3a6e2db58404c55b52a3b8e354
