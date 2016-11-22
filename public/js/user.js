@@ -1,4 +1,4 @@
-var mongoId = "583337a4b416e70012a50a5d";
+// var mongoId = "583337a4b416e70012a50a5d";
 var userLat = 34.0129821;
 var userLng = -118.495196;
 var searchResult = [];
@@ -17,7 +17,7 @@ function initMap() {
       });
     }
 
-$('#submit').click(function(event) {
+$('#submitListing').click(function(event) {
 
   console.log('jQuery works')
 	var city = $('#city').val();
@@ -50,21 +50,18 @@ $('#submit').click(function(event) {
 
   event.preventDefault();
 });
-// {"id": mongoId}
-$.get("http://homeme-api.herokuapp.com/listings", {}, function(data) {
-	for (var i = 0; i < data.length; i++) {
-		if (
-			data[i].price <= highPrice &&
-			data[i].price >= lowPrice &&
-			data[i].bedrooms === bedrooms &&
-			data[i].bathrooms === bathrooms &&
-			data[i].pets === pets &&
-			data[i].furnished === furnished &&
-			) {
-			searchResult.push(data[i]);
-		}
-	}
-	console.log(searchResult);
-	// console.log(data.latitude);
-	// console.log(data.longitude);
-}, "json");
+// $.get("http://homeme-api.herokuapp.com/listings", {}, function(data) {
+// 	for (var i = 0; i < data.length; i++) {
+// 		if (
+// 			data[i].price <= highPrice &&
+// 			data[i].price >= lowPrice &&
+// 			data[i].bedrooms === bedrooms &&
+// 			data[i].bathrooms === bathrooms &&
+// 			data[i].pets === pets &&
+// 			data[i].furnished === furnished &&
+// 			) {
+// 			searchResult.push(data[i]);
+// 		}
+// 	}
+// 	console.log(searchResult);
+// }, "json");
