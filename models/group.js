@@ -6,8 +6,8 @@ var messageSchema = new mongoose.Schema({
 
 var groupSchema = new mongoose.Schema({
   name: { type: String, unique: true},
-  faveListings: [{type: mongoose.Schema.Types.ObjectId, ref: 'Listing'}],
   messages: [messageSchema],
+  favorites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Listing'}],
   users: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 
