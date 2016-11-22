@@ -2,36 +2,26 @@ var express = require('express');
 var router  = new express.Router();
 var passport = require('passport');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index.ejs', { title: 'HomeMe', user: req.user });
-});
+// require controllers
+var welcomeController = require('../controllers/welcome');
+var listingController = require('../controllers/listings');
+var groupController = require('../controllers/groups');
 
-router.get('/listings/new', function(req, res, next) {
-  res.render('newlisting.ejs', { title: 'HomeMe', user: req.user });
-});
+/* GET root path. */
+router.route('/')
+  .get(welcomeController.welcome)
 
-router.get('/users', function(req, res, next) {
-  res.render('user.ejs', { title: 'HomeMe', user: req.user});
-});
+// first page upon logging in
+router.route('/listings')
+  .get(listingController.index)
 
-router.get('/groups', function(req, res, next) {
-  res.render('group.ejs', { title: 'HomeMe', user: req.user});
-});
+// route to post a new listing
+router.route('/listings/new')
+  .get(listingController.newListing)
 
-// /* GET root path. */
-// router.route('/')
-//   .get(pagesCtrl.welcome)
-//
-// // user home page after logging in
-// router.route('/user')
-//   .get(usersCtrl.index)
-// // user page for posting the listing
-// router.route('/user/postlisting')
-//   .get(usersCtrl.postListing)
-// // user page for group chat
-// router.route('/user/group')
-//   .get(usersCtrl.groupChat)
+// route to see your group chat
+router.route('/group')
+  .get(groupController.show)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
@@ -42,7 +32,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/users',
+    successRedirect: '/listings',
     failureRedirect: '/'
   }
 ));
