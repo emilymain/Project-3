@@ -76,7 +76,6 @@ router.delete('/api/listings', function(req, res, next) {
   })
 });
 
-
 function authenticatedUser(req, res, next) {
   // if user authenticated, continue to next execution
   if(req.isAuthenticated()) return next();
@@ -87,18 +86,20 @@ function authenticatedUser(req, res, next) {
 /* GET root path. */
 router.route('/')
   .get(welcomeController.welcome)
-
 // first page upon logging in
 router.route('/listings')
   .get(authenticatedUser, listingsController.index)
-
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
-
-// route to see your group chat
+// route to create a group chat
 router.route('/group')
   .get(authenticatedUser, groupsController.show)
+
+// API for groupchat
+router.route('/api/group')
+  .get(groupsController.index)
+  .post(groupsController.create);
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
