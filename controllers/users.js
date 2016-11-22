@@ -2,7 +2,6 @@ var User = require('../models/user');
 
 // module.exports = {
 //   index: index,
-// }
 //
 // function index(req, res) {
 //     User.find({}, function(err, users) {
