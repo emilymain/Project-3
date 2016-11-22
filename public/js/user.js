@@ -1,6 +1,6 @@
 // This page includes the javscript for the front-end
 
-$(function() {
+// $(function() {
 
 	console.log('javascript is working');
 
@@ -56,4 +56,4 @@ $(function() {
 	}, "json");
 
 // end of document.ready function
-});
+// });

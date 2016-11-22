@@ -2,18 +2,26 @@ var express = require('express');
 var router  = new express.Router();
 var passport = require('passport');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index.ejs', { title: 'HomeMe', user: req.user });
-});
+// require controllers
+var welcomeController = require('../controllers/welcome');
+var listingController = require('../controllers/listings');
+var groupController = require('../controllers/groups');
 
-router.get('/users', function(req, res, next) {
-  res.render('user.ejs', { title: 'HomeMe', user: req.user });
-});
+/* GET root path. */
+router.route('/')
+  .get(welcomeController.welcome)
 
-router.get('/users/group', function(req, res, next) {
-  res.render('group.ejs', { title: 'HomeMe', user: req.user});
-})
+// first page upon logging in
+router.route('/listings')
+  .get(listingController.index)
+
+// route to post a new listing
+router.route('/listings/new')
+  .get(listingController.newListing)
+
+// route to see your group chat
+router.route('/group')
+  .get(groupController.show)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
@@ -24,7 +32,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/users',
+    successRedirect: '/listings',
     failureRedirect: '/'
   }
 ));
@@ -33,7 +41,6 @@ router.get('/oauth2callback', passport.authenticate(
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
-  // antonio: when i try to logout it sends me back to 'choose an account'; if i url to localhost:3000 i'm still logged in
 });
 
 module.exports = router;
