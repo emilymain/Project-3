@@ -4,15 +4,13 @@
     <title><%= title %> New Listing Page </title>
     <title><%= title %></title>
     <%- include('./partials/head') %>
-    <link rel='stylesheet' href='/css/user.css'/>
+    <link rel='stylesheet' href='/css/newlistings.css'/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script rel='javascript' src='/js/listing.js'></script>
   </head>
   <body>
     <%- include('./partials/navbar.ejs')  %>
-
-    <div class="container" id="map"></div>
 
     <form class="container">
       <div class="form-group">
@@ -55,11 +53,8 @@
         <label for="formGroupExampleInput4">Furnished</label>
         <input type="text" class="form-control" id="furnished" placeholder="true / false">
       </div>
-      <button type="button" class="btn btn-primary" id="submit">AJAX it in there</button>
+      <button type="button" class="btn btn-primary" id="submitListing">AJAX it in there</button>
     </form>
-    <script rel='javascript' src='/js/user.js'></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjhPiDnmTAQy95uLaqIr9ONbyAVMC3myw&callback=initMap">
-    </script>
+    <script rel='javascript' src='/js/newlisting.js'></script>
   </body>
 </html>
