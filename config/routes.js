@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
   res.render('index.ejs', { title: 'HomeMe', user: req.user });
 });
 
-router.get('/listings', function(req, res, next) {
+router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
     Listing.findOne({'_id': req.query.id}, function(err, listing) {
       if (err) res.send(err);
@@ -33,7 +33,7 @@ router.get('/listings', function(req, res, next) {
   }
 });
 
-router.post('/listings', function(req, res, next) {
+router.post('/api/listings', function(req, res, next) {
   var newListing = {
     city: req.body.city,
     state: req.body.state,
@@ -69,7 +69,7 @@ router.post('/listings', function(req, res, next) {
   })
 });
 
-router.delete('/listings', function(req, res, next) {
+router.delete('/api/listings', function(req, res, next) {
   var id = { "_id": req.body.id }
   Listing.find(id).remove(function(err) {
     if (err) console.log(err);
