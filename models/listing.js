@@ -18,7 +18,8 @@ var listingSchema = new mongoose.Schema({
   bathrooms: Number,
   duration: Number,
   pets: Boolean,
-  furnished: Boolean
+  furnished: Boolean,
+  imageurl: String 
 });
 
 var Listing = mongoose.model('Listing', listingSchema);
