@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
     <%- include('./partials/head') %>
-    <link rel='stylesheet' href='/css/listings.css'/>
-  </head>
-  <body>
+        <link rel='stylesheet' href='/css/listings.css' />
+</head>
+
+<body>
     <%- include('./partials/navbar.ejs')  %>
 
-    <div class="container" id="map"></div>
-    <form class="container">
-      <div class="form-group">
-        <label for="formGroupExampleInput">City</label>
-        <input type="text" class="form-control" id="city" placeholder="string">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput3">Minimum Price</label>
-        <input type="text" class="form-control" id="minPrice" placeholder="integer (no commas)">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput3">Maximum Price</label>
-        <input type="text" class="form-control" id="maxPrice" placeholder="integer (no commas)">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">Bedrooms</label>
-        <input type="text" class="form-control" id="bedrooms" placeholder="number">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">Bathrooms</label>
-        <input type="text" class="form-control" id="bathrooms" placeholder="number">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">Duration</label>
-        <input type="text" class="form-control" id="duration" placeholder="number">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">Pets</label>
-        <input type="text" class="form-control" id="pets" placeholder="true / false">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput4">Furnished</label>
-        <input type="text" class="form-control" id="furnished" placeholder="true / false">
-      </div>
-      <button type="button" class="btn btn-primary" id="submitSearch">search listings</button>
-    </form>
-    <!-- <script rel='javascript' src='/js/listings.js'></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjhPiDnmTAQy95uLaqIr9ONbyAVMC3myw"></script>
-    <script rel='javascript' src='/js/listings.js'></script>
-    <!-- <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjhPiDnmTAQy95uLaqIr9ONbyAVMC3myw&callback=initMap">
-    </script> -->
-  </body>
+        <div class="container" id="map"></div>
+        <form class="container">
+            <div class="form-group">
+                <label for="formGroupExampleInput">City</label>
+                <input type="text" class="form-control" id="city" placeholder="string">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput3">Minimum Price</label>
+                <input type="text" class="form-control" id="minPrice" placeholder="integer (no commas)">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput3">Maximum Price</label>
+                <input type="text" class="form-control" id="maxPrice" placeholder="integer (no commas)">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Bedrooms</label>
+                <input type="text" class="form-control" id="bedrooms" placeholder="number">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Bathrooms</label>
+                <input type="text" class="form-control" id="bathrooms" placeholder="number">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Duration</label>
+                <input type="text" class="form-control" id="duration" placeholder="number">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Pets</label>
+                <input type="text" class="form-control" id="pets" placeholder="true / false">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Furnished</label>
+                <input type="text" class="form-control" id="furnished" placeholder="true / false">
+            </div>
+            <button type="button" class="btn btn-primary" id="submitSearch">search listings</button>
+
+        </form>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjhPiDnmTAQy95uLaqIr9ONbyAVMC3myw&callback=initMap">
+        </script>
+        <script rel='javascript' src='/js/listings.js'></script>
+
+</body>
+
 </html>
