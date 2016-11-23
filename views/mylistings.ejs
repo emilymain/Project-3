@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%- include('./partials/head') %>
+    <link rel='stylesheet' href='/css/mylistings.css' />
+    <script rel='javascript' src='/js/mylistings.js'></script>
     <meta charset="utf-8">
     <title>My Listings</title>
   </head>
 
   <body>
+    <%- include('./partials/navbar.ejs')  %>
+    <div class="listing-list">
       <div class="row">
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img src="" alt="...">
-      </a>
+        <div class="col-xs-6 col-md-3">
+          <a href="#" class="thumbnail">
+            <img src=<%= data[0].imageurl %> alt="homeMe Posting">
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
   </body>
 </html>
