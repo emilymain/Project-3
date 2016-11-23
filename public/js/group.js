@@ -1,20 +1,10 @@
 $(function() {
-	console.log('Page loaded!');
-	var socket = io();
-	// $('form').submit(function() {
-	// 	socket.emit('chat message', $('#name').val() + ': ' + $('#m').val());
-	// 	$('#m').val('');
-	// 	return false;
-	// });
-	// socket.on('chat message', function(msg) {
-	// 	$('#messages').append($('<li>').text(msg));
-	// });
-
 	// Grab all the needed DOM elements using jQuery
-	$name = $('#name');
 	$m = $('#m');
 	$form = $('#form');
 	$messages = $('#messages');
+
+	var socket = io();
 
 	// Grab all todos from our db
   $.ajax({
@@ -59,11 +49,15 @@ $(function() {
 				console.log("Failed: ", err);
 			}
 		)
-		.then(
-			function(jsonMessage) {
-				$('#messages').append($('<li>').text(`${jsonMessage.username}: ${jsonMessage.message}`));
-			}
-		);
+	});
+
+	$form.submit(function(){
+		socket.emit('chat message', (`${$('span').attr('id')}: ${$m.val()}`));
+		$m.val('');
+		return false;
+	});
+	socket.on('chat message', function(msg){
+		$messages.append($('<li>').text(msg));
 	});
 
 // end of document.ready function
