@@ -1,24 +1,34 @@
-<nav style="background-color: red;">
+<nav style="background-color: white;">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
         <img alt="Logo" src="">
       </a>
     </div>
+    <ul class= "nav nav-tabs nav-justified">
     <p class="navbar-text navbar-right">
       <% if (user) { %>
         Hello, <%= user.name %>
         <br>
-        <a href="/listings">Main</a>
-        <br>
+        <li>
+        <a href="/listings">Search</a>
+      </li>
+        <!-- <br> -->
+        <li>
         <a href="/listings/new">Post New Listing</a>
-        <br>
-        <a href="/group">Group</a>
-        <br>
-        <a href="/logout">Logout</a>
-      <% } else { %>
-        <a href="/auth/google">Login with Google</a>
-      <% } %>
+      </li>
+        <!-- <br> -->
+      <li>
+        <a href="/group">My Group</a>
+      </li>
+        <!-- <br> -->
     </p>
+    <p class="navbar-text navbar-right">
+      <a href="/logout">Logout</a>
+      <% } else { %>
+      <a href="/auth/google">Login with Google</a>
+      <% } %>
+
+  </ul>
   </div>
 </nav>
