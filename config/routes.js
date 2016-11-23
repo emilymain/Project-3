@@ -44,7 +44,7 @@ router.post('/api/listings', function(req, res, next) {
     duration: req.body.duration,
     pets: req.body.pets,
     furnished: req.body.furnished,
-    imageurl: req.body.imageurl    
+    imageurl: req.body.imageurl
   }
   geocoder.geocode(newListing.address + ", " + newListing.city + ", " + newListing.state + " " + newListing.zipcode)
   .then(function(data) {
@@ -121,5 +121,14 @@ router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
+
+//mylistings router
+router.get('/listings/user', function(req, res, next) {
+  Listing.find({}, function(err, listings) {
+      if (err) res.send(err);
+      res.json(listings);
+    });
+  }
+
 
 module.exports = router;
