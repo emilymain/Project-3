@@ -17,6 +17,7 @@ var geocoder = NodeGeocoder(options);
 var welcomeController = require('../controllers/welcome');
 var listingsController = require('../controllers/listings');
 var groupsController = require('../controllers/groups');
+var mylistingsController = require('../controllers/mylistings');
 
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
@@ -97,6 +98,10 @@ router.route('/listings/new')
 router.route('/group')
   .get(authenticatedUser, groupsController.show)
 
+  //mylistings router
+  router.route('/listings/favorites')
+  .get(mylistingsController.index)
+
 // API for groupchat
 router.route('/api/group')
   .get(groupsController.index)
@@ -121,14 +126,5 @@ router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
-
-//mylistings router
-router.get('/listings/user', function(req, res, next) {
-  Listing.find({}, function(err, listings) {
-      if (err) res.send(err);
-      res.json(listings);
-    });
-  }
-
 
 module.exports = router;
