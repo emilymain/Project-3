@@ -25,8 +25,8 @@ function initMap() {
     var bedrooms = $('#bedrooms').val();
     var bathrooms = $('#bathrooms').val();
     var duration = $('#duration').val();
-    var pets = $('#pets').val();
-    var furnished = $('#furnished').val();
+    var pets = ($('#pets').val());
+    var furnished = ($('#furnished').val());
 
     var params = {
       "city": city,
@@ -39,19 +39,62 @@ function initMap() {
       "furnished": furnished
     }
 
+    var formValues = [params.city, params.minPrice, params.maxPrice, params.bedrooms, params.bathrooms, params.duration
+      // , params.pets, params.furnished
+    ];
+    var chosenValues = [];
+
+    for (var i = 0; i < formValues.length; i++) {
+      if (formValues[i]) {
+        chosenValues.push(formValues[i]);
+      } else {
+        chosenValues.push("");
+      }
+    };
+
+    console.log(chosenValues);
+    console.log(formValues);
+
     $.get("http://localhost:3000/api/listings", {}, function(data) {
-			console.log(data[0])
       for (var i = 0; i < data.length; i++) {
-        if (
-          data[i].city === params.city
-          // && data[i].price >= params.minPrice
-          // && data[i].price <= params.maxPrice
+        // if (
+        //   data[i].city === params.city
+        //   && data[i].price >= params.minPrice
+        //   && data[i].price <= params.maxPrice
           // && data[i].bedrooms === params.bedrooms
-          // && data[i].bathrooms === params.bathrooms
-          // && data[i].duration === params.duration
-          // && data[i].pets === params.pets
-          // && data[i].furnished === params.furnished
-        ) {
+          // && data[i].bathrooms === chosenValues[4]
+          // && data[i].duration === chosenValues[5]
+          // && data[i].pets === chosenValues[6]
+          // && data[i].furnished === chosenValues[7]
+          for (var j = 0; j < chosenValues.length; j++) {
+
+            let chosenValue = chosenValues[j];
+            let listing = data[i];
+            
+            if (chosenValue === listing.city || chosenValue === "") {
+              awesome = true;
+            }
+            else if (chosenValue >= listing.minPrice || chosenValue === "") {
+              awesome = true;
+            }
+            else if (chosenValue <= listing.maxPrice || chosenValue === "") {
+              awesome = true;
+            }
+            else if (chosenValue === listing.bedrooms || chosenValue === "") {
+              awesome = true;
+            }
+            else if (chosenValue === listing.bathrooms || chosenValue === "") {
+              awesome = true;
+            }
+            else if (chosenValue === listing.duration || chosenValue === "") {
+              awesome = true;
+            } else {
+              awesome = false;
+            }
+          };
+
+// ){
+        if (awesome) {
           searchResult.push(data[i])
           var latLng = {
             lat: data[i].latitude,
@@ -61,6 +104,7 @@ function initMap() {
         }
       }
       console.log(searchResult);
+      console.log(searchResult.length);
     })
   });
 
