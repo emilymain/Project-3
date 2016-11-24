@@ -43,21 +43,6 @@ function initMap() {
     console.log('PARAMS ARE', params);
     console.log("5" === 5);
     console.log("5" > 6);
-    var formValues = [params.city, params.minPrice, params.maxPrice, params.bedrooms, params.bathrooms, params.duration
-      // , params.pets, params.furnished
-    ];
-    var chosenValues = [];
-
-    for (var i = 0; i < formValues.length; i++) {
-      if (formValues[i]) {
-        chosenValues.push(formValues[i]);
-      } else {
-        chosenValues.push("");
-      }
-    };
-
-    console.log(chosenValues);
-    console.log(formValues);
 
     $.get("http://localhost:3000/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
@@ -74,61 +59,32 @@ function initMap() {
           // && data[i].furnished === chosenValues[7]
           // for (var j = 0; j < chosenValues.length; j++) {
 
-            var check = true;
             var match = true;
-            while (check) {
 
-              if (chosenValues[0] != data[i].city && chosenValues[0] != "") {
-                check = false;
+            if (params.city != data[i].city && params.city != "") {
                 match = false;
-              } else if (chosenValues[0] == data[i].city || chosenValues[0] == "") {
-                  check = true;
-              };
-              //minPrice
-              if (chosenValues[1] < data[i].price && chosenValues[1] != "") {
-                check = false;
+            };
+
+            console.log('min price is', params.minPrice, 'listing at', data[i].price)
+            //minPrice
+            if (data[i].price < params.minPrice && params.minPrice != "") {
                 match = false;
-              } else if (chosenValues[1] >= data[i].price || chosenValues[1] == "") {
-                  check = true;
-              };
-              //maxPrice
-              if (chosenValues[2] > data[i].price && chosenValues[2] != "") {
-                check = false;
-                match = false;
-              } else if (chosenValues[2] <= data[i].price || chosenValues[2] == "") {
-                  check = true;
-              };
+            };
+            //maxPrice
+            if (data[i].price > params.maxPrice && params.maxPrice != "") {
+              match = false;
+            };
 
-              if (chosenValues[3] != data[i].bedrooms && chosenValues[3] != "") {
-                check = false;
-                match = false;
-              } else if (chosenValues[3] == data[i].bedrooms || chosenValues[3] == "") {
-                  check = true;
-              };
+            if (params.bedrooms != data[i].bedrooms && params.bedrooms != "") {
+              match = false;
+            };
+            if (params.bathrooms != data[i].bathrooms && params.bathrooms != "") {
+              match = false;
+            };
+            if (params.duration != data[i].duration && params.duration != "") {
+              match = false;
+            };
 
-              if (chosenValues[4] != data[i].bathrooms && chosenValues[4] != "") {
-                check = false;
-                match = false;
-              } else if (chosenValues[4] == data[i].bathrooms || chosenValues[4] == "") {
-                  check = true;
-              };
-
-              if (chosenValues[5] != data[i].duration && chosenValues[5] != "") {
-                check = false;
-                match = false;
-              } else if (chosenValues[5] == data[i].duration || chosenValues[5] == "") {
-                  check = true;
-              };
-              check = false;
-
-              // else {
-              //   match = false;
-              // }
-
-            }
-          // };
-
-// ){
         if (match) {
           searchResult.push(data[i])
           var latLng = {
