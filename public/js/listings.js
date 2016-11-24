@@ -1,14 +1,27 @@
 $(function () {
-  $('#button').click(function() {
-    $.ajax({
-      type: "POST",
-      url: '/listings/favorites/5834f2be052604125b04c823'
-    }).done(function(data) {
-      console.log(data);
-    })
-  });
+  // $('#button').click(function() {
+  //   $.ajax({
+  //     type: "POST",
+  //     url: '/listings/favorites/5834f2be052604125b04c823'
+  //   }).done(function(data) {
+  //     console.log(data);
+  //   })
+  // });
 
+  $.ajax({
+    type: 'GET',
+    url: '/api/listings'
+  }).done(function(data){
+    var listingsarray = data;
+    listingsarray.forEach(function(listing){
+      var listinghtml = $(`<li>${listing.formattedAddress}<br>
+                            <a href="/listings/${listing._id}"><img src="${listing.imageurl}"></a>
+                            </li>`);
+      $('#listings').append(listinghtml);
+    });
+  });
 });
+
 var map;
 var markers = [];
 var searchResult = [];

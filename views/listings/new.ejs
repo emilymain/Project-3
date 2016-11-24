@@ -3,13 +3,12 @@
   <head>
     <title><%= title %> New Listing Page </title>
     <title><%= title %></title>
-    <%- include('./partials/head') %>
-    <link rel='stylesheet' href='/css/newlistings.css'/>
-    <script rel='javascript' src='/js/listing.js'></script>
+    <%- include('../partials/head') %>
+    <link rel='stylesheet' href='/css/newlisting.css'/>
+    <script rel='javascript' src='/js/listings.js'></script>
   </head>
   <body>
-    <%- include('./partials/navbar.ejs')  %>
-
+    <%- include('../partials/navbar.ejs')  %>
     <form class="container">
       <div class="form-group">
         <label for="formGroupExampleInput">City</label>
@@ -56,7 +55,7 @@
     </form>
     <input type="file" id="file-input">
       <p id="status">Please select a file</p>
-      <img id="preview" src="/images/default.png">
+      <img style='width:100px'id="preview" src="/images/default.png">
     <script rel='javascript' src='/js/newlisting.js'></script>
   </body>
 </html>
