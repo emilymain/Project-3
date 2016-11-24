@@ -6,7 +6,7 @@ module.exports = {
 }
 
 function index(req, res, next) {
-  res.render('listings.ejs', { title: 'HomeMe', user: req.user });
+  res.render('listings.ejs', { title: 'sup', user: req.user });
 }
 
 function newListing(req, res, next) {

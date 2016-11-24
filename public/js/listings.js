@@ -20,13 +20,14 @@ function initMap() {
     searchResult = [];
 
     var city = $('#city').val();
-    var minPrice = $('#minPrice').val();
-    var maxPrice = $('#maxPrice').val();
-    var bedrooms = $('#bedrooms').val();
-    var bathrooms = $('#bathrooms').val();
-    var duration = $('#duration').val();
+    var minPrice = Number($('#minPrice').val());
+    var maxPrice = Number($('#maxPrice').val());
+    var bedrooms = Number($('#bedrooms').val());
+    var bathrooms = Number($('#bathrooms').val());
+    var duration = Number($('#duration').val());
     var pets = ($('#pets').val());
     var furnished = ($('#furnished').val());
+    console.log(minPrice);
 
     var params = {
       "city": city,
@@ -39,6 +40,9 @@ function initMap() {
       "furnished": furnished
     }
 
+    console.log('PARAMS ARE', params);
+    console.log("5" === 5);
+    console.log("5" > 6);
     var formValues = [params.city, params.minPrice, params.maxPrice, params.bedrooms, params.bathrooms, params.duration
       // , params.pets, params.furnished
     ];
@@ -57,6 +61,8 @@ function initMap() {
 
     $.get("http://localhost:3000/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
+        console.log('DATA', data[i]);
+
         // if (
         //   data[i].city === params.city
         //   && data[i].price >= params.minPrice
@@ -66,35 +72,64 @@ function initMap() {
           // && data[i].duration === chosenValues[5]
           // && data[i].pets === chosenValues[6]
           // && data[i].furnished === chosenValues[7]
-          for (var j = 0; j < chosenValues.length; j++) {
+          // for (var j = 0; j < chosenValues.length; j++) {
 
-            let chosenValue = chosenValues[j];
-            let listing = data[i];
-            
-            if (chosenValue === listing.city || chosenValue === "") {
-              awesome = true;
+            var check = true;
+            var match = true;
+            while (check) {
+
+              if (chosenValues[0] != data[i].city && chosenValues[0] != "") {
+                check = false;
+                match = false;
+              } else if (chosenValues[0] == data[i].city || chosenValues[0] == "") {
+                  check = true;
+              };
+              //minPrice
+              if (chosenValues[1] < data[i].price && chosenValues[1] != "") {
+                check = false;
+                match = false;
+              } else if (chosenValues[1] >= data[i].price || chosenValues[1] == "") {
+                  check = true;
+              };
+              //maxPrice
+              if (chosenValues[2] > data[i].price && chosenValues[2] != "") {
+                check = false;
+                match = false;
+              } else if (chosenValues[2] <= data[i].price || chosenValues[2] == "") {
+                  check = true;
+              };
+
+              if (chosenValues[3] != data[i].bedrooms && chosenValues[3] != "") {
+                check = false;
+                match = false;
+              } else if (chosenValues[3] == data[i].bedrooms || chosenValues[3] == "") {
+                  check = true;
+              };
+
+              if (chosenValues[4] != data[i].bathrooms && chosenValues[4] != "") {
+                check = false;
+                match = false;
+              } else if (chosenValues[4] == data[i].bathrooms || chosenValues[4] == "") {
+                  check = true;
+              };
+
+              if (chosenValues[5] != data[i].duration && chosenValues[5] != "") {
+                check = false;
+                match = false;
+              } else if (chosenValues[5] == data[i].duration || chosenValues[5] == "") {
+                  check = true;
+              };
+              check = false;
+
+              // else {
+              //   match = false;
+              // }
+
             }
-            else if (chosenValue >= listing.minPrice || chosenValue === "") {
-              awesome = true;
-            }
-            else if (chosenValue <= listing.maxPrice || chosenValue === "") {
-              awesome = true;
-            }
-            else if (chosenValue === listing.bedrooms || chosenValue === "") {
-              awesome = true;
-            }
-            else if (chosenValue === listing.bathrooms || chosenValue === "") {
-              awesome = true;
-            }
-            else if (chosenValue === listing.duration || chosenValue === "") {
-              awesome = true;
-            } else {
-              awesome = false;
-            }
-          };
+          // };
 
 // ){
-        if (awesome) {
+        if (match) {
           searchResult.push(data[i])
           var latLng = {
             lat: data[i].latitude,
