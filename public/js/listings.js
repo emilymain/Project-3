@@ -40,24 +40,10 @@ function initMap() {
       "furnished": furnished
     }
 
-    console.log('PARAMS ARE', params);
-    console.log("5" === 5);
-    console.log("5" > 6);
+    
 
     $.get("http://localhost:3000/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
-        console.log('DATA', data[i]);
-
-        // if (
-        //   data[i].city === params.city
-        //   && data[i].price >= params.minPrice
-        //   && data[i].price <= params.maxPrice
-          // && data[i].bedrooms === params.bedrooms
-          // && data[i].bathrooms === chosenValues[4]
-          // && data[i].duration === chosenValues[5]
-          // && data[i].pets === chosenValues[6]
-          // && data[i].furnished === chosenValues[7]
-          // for (var j = 0; j < chosenValues.length; j++) {
 
             var match = true;
 
