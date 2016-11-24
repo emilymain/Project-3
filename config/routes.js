@@ -98,14 +98,16 @@ router.route('/listings/new')
 router.route('/group')
   .get(authenticatedUser, groupsController.show)
 
-  //mylistings router
-  router.route('/listings/favorites')
-  .get(mylistingsController.index)
-
 // API for groupchat
 router.route('/api/group')
   .get(groupsController.index)
   .post(groupsController.create);
+
+router.route('/listings/favorites')
+  .get(mylistingsController.index)
+
+router.route('/listings/favorites/:id')
+  .post(mylistingsController.addFaves)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
