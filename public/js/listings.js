@@ -63,27 +63,27 @@ function initMap() {
 
             if (params.city != data[i].city && params.city != "") {
                 match = false;
-            };
+            }
 
-            console.log('min price is', params.minPrice, 'listing at', data[i].price)
+            //console.log('min price is', params.minPrice, 'listing at', data[i].price)
             //minPrice
-            if (data[i].price < params.minPrice && params.minPrice != "") {
+            else if (data[i].price < params.minPrice && params.minPrice != "") {
                 match = false;
-            };
+            }
             //maxPrice
-            if (data[i].price > params.maxPrice && params.maxPrice != "") {
+            else if (data[i].price > params.maxPrice && params.maxPrice != "") {
               match = false;
-            };
+            }
 
-            if (params.bedrooms != data[i].bedrooms && params.bedrooms != "") {
+            else if (params.bedrooms != data[i].bedrooms && params.bedrooms != "") {
               match = false;
-            };
-            if (params.bathrooms != data[i].bathrooms && params.bathrooms != "") {
+            }
+            else if (params.bathrooms != data[i].bathrooms && params.bathrooms != "") {
               match = false;
-            };
-            if (params.duration != data[i].duration && params.duration != "") {
+            }
+            else if (params.duration != data[i].duration && params.duration != "") {
               match = false;
-            };
+            }
 
         if (match) {
           searchResult.push(data[i])
