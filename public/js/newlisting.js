@@ -72,7 +72,9 @@ $('#submitListing').click(function(event) {
 
 	 console.log(params);
 
-  $.post( "http://localhost:3000/api/listings", params, "json");
+  $.post( "http://localhost:3000/api/listings", params, "json").done(function(){
+    window.location.href="/listings"
+  });
 
   event.preventDefault();
 });
