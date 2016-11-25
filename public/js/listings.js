@@ -11,22 +11,21 @@ function initMap() {
   map = new google.maps.Map($('#map')[0], {
     zoom: 12,
     center: center,
-    mapTypeId: 'terrain'
+    mapTypeId: 'roadmap'
   });
 
-  // This event listener will call addMarker() when the map is clicked.
   $('#submitSearch').click(function(event) {
     deleteMarkers();
     searchResult = [];
 
     var city = $('#city').val();
-    var minPrice = $('#minPrice').val();
-    var maxPrice = $('#maxPrice').val();
-    var bedrooms = $('#bedrooms').val();
-    var bathrooms = $('#bathrooms').val();
-    var duration = $('#duration').val();
-    var pets = $('#pets').val();
-    var furnished = $('#furnished').val();
+    var minPrice = Number($('#minPrice').val());
+    var maxPrice = Number($('#maxPrice').val());
+    var bedrooms = Number($('#bedrooms').val());
+    var bathrooms = Number($('#bathrooms').val());
+    var duration = Number($('#duration').val());
+    var pets = ($('#pets').val());
+    var furnished = ($('#furnished').val());
 
     var params = {
       "city": city,
@@ -41,16 +40,34 @@ function initMap() {
 
     $.get("http://localhost:3000/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
-        if (
-          data[i].city === params.city
-          // || data[i].price <= params.minPrice
-          // || data[i].price >= params.maxPrice
-          // || data[i].bedrooms === params.bedrooms
-          // || data[i].bathrooms === params.bathrooms
-          // || data[i].duration === params.duration
-          // || data[i].pets === params.pets
-          // || data[i].furnished === params.furnished
-        ) {
+
+            var match = true;
+
+            if (params.city != data[i].city && params.city != "") {
+                match = false;
+            }
+
+            //console.log('min price is', params.minPrice, 'listing at', data[i].price)
+            //minPrice
+            else if (data[i].price < params.minPrice && params.minPrice != "") {
+                match = false;
+            }
+            //maxPrice
+            else if (data[i].price > params.maxPrice && params.maxPrice != "") {
+              match = false;
+            }
+
+            else if (params.bedrooms != data[i].bedrooms && params.bedrooms != "") {
+              match = false;
+            }
+            else if (params.bathrooms != data[i].bathrooms && params.bathrooms != "") {
+              match = false;
+            }
+            else if (params.duration != data[i].duration && params.duration != "") {
+              match = false;
+            }
+
+        if (match) {
           searchResult.push(data[i])
           var latLng = {
             lat: data[i].latitude,
@@ -60,6 +77,7 @@ function initMap() {
         }
       }
       console.log(searchResult);
+      console.log(searchResult.length);
     })
   });
 
