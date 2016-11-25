@@ -7,6 +7,7 @@ module.exports = {
 }
 
 function index(req, res, next) {
+  
   res.render('listings/index', { title: 'HomeMe', user: req.user });
 }
 
