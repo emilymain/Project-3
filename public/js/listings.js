@@ -116,3 +116,5 @@ function deleteMarkers() {
   clearMarkers();
   markers = [];
 }
+
+console.log(searchResult);
