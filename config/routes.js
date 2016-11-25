@@ -17,6 +17,7 @@ var geocoder = NodeGeocoder(options);
 var welcomeController = require('../controllers/welcome');
 var listingsController = require('../controllers/listings');
 var groupsController = require('../controllers/groups');
+var mylistingsController = require('../controllers/mylistings');
 
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
@@ -44,7 +45,8 @@ router.post('/api/listings', function(req, res, next) {
     duration: req.body.duration,
     pets: req.body.pets,
     furnished: req.body.furnished,
-    imageurl: req.body.imageurl    
+    imageurl: req.body.imageurl,
+    createdBy: req.user._id
   }
   geocoder.geocode(newListing.address + ", " + newListing.city + ", " + newListing.state + " " + newListing.zipcode)
   .then(function(data) {
@@ -93,6 +95,10 @@ router.route('/listings')
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
+//route to listings/id
+router.route('/listings/:id')
+  .get(authenticatedUser, listingsController.show)
+
 // route to create a group chat
 router.route('/group')
   .get(authenticatedUser, groupsController.show)
@@ -101,6 +107,12 @@ router.route('/group')
 router.route('/api/group')
   .get(groupsController.index)
   .post(groupsController.create);
+
+router.route('/listings/favorites')
+  .get(mylistingsController.index)
+
+router.route('/listings /favorites/:id')
+  .post(mylistingsController.addFaves)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(

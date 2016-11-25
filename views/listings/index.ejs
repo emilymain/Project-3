@@ -5,14 +5,18 @@
     <title>
         <%= title %>
     </title>
-    <%- include('./partials/head') %>
+    <%- include('../partials/head') %>
         <link rel='stylesheet' href='/css/listings.css' />
 </head>
 
 <body>
-    <%- include('./partials/navbar.ejs')  %>
+    <%- include('../partials/navbar.ejs')  %>
+    <!-- <button id="button">Hello</button> -->
+    <ul id="listings">
+    </ul>
 
         <div class="container" id="map"></div>
+        <div id="listingContainer"></div>
         <form class="container">
             <div class="form-group">
                 <label for="formGroupExampleInput">City</label>
