@@ -14,7 +14,6 @@ function initMap() {
     mapTypeId: 'roadmap'
   });
 
-  // This event listener will call addMarker() when the map is clicked.
   $('#submitSearch').click(function(event) {
     deleteMarkers();
     searchResult = [];
@@ -27,7 +26,6 @@ function initMap() {
     var duration = Number($('#duration').val());
     var pets = ($('#pets').val());
     var furnished = ($('#furnished').val());
-    console.log(minPrice);
 
     var params = {
       "city": city,
@@ -39,8 +37,6 @@ function initMap() {
       "pets": pets,
       "furnished": furnished
     }
-
-    
 
     $.get("http://localhost:3000/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
