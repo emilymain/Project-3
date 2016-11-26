@@ -18,6 +18,7 @@ var welcomeController = require('../controllers/welcome');
 var listingsController = require('../controllers/listings');
 var groupsController = require('../controllers/groups');
 var mylistingsController = require('../controllers/mylistings');
+var postedlistingsController = require('../controllers/postedlistings');
 
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
@@ -111,8 +112,11 @@ router.route('/api/group')
 router.route('/listings/favorites')
   .get(mylistingsController.index)
 
-router.route('/listings /favorites/:id')
+router.route('/listings/favorites/:id')
   .post(mylistingsController.addFaves)
+
+router.route('/listings/postedlistings')
+  .get(postedlistingsController.index)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
