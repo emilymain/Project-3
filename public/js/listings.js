@@ -110,7 +110,7 @@ function initMap() {
         // $(document).scrollTop("550");
         $('body,html').animate({scrollTop: 556}, 800);
         $('#listingArticle').append(
-          '<article class="style3"><span class="image"><img src="images/pic03.jpg" alt="" /></span><a href="www.google.com"><h2>' + searchResult[i].neighborhood + '</h2><div class="content"><p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p></div></a></article>'
+          `<article class="style3"><span class="image"><img style="height: 200px;" src="${searchResult[i].imageurl}" alt="" /></span><a href="www.google.com"><h2>${searchResult[i].neighborhood}</h2><div class="content"><p>${searchResult[i].formattedAddress}</p></div></a></article>`
         )
       };
     })
