@@ -7,7 +7,7 @@ module.exports = {
 }
 
 function index(req, res, next) {
-  res.render('mylistings.ejs', { title: 'HomeMe', user: req.user, faves: faves });
+  res.render('mylistings.ejs', { title: 'HomeMe', user: req.user });
 }
 
 function addFaves(req, res, next) {

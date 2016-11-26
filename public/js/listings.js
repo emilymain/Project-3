@@ -53,8 +53,8 @@ function initMap() {
     var bedrooms = Number($('#bedrooms').val());
     var bathrooms = Number($('#bathrooms').val());
     var duration = Number($('#duration').val());
-    var pets = ($('#pets').val());
-    var furnished = ($('#furnished').val());
+    var pets = $('#pets').val();
+    var furnished = $('#furnished').val();
 
     var params = {
       "city": city,

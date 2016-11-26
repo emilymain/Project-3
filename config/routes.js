@@ -97,8 +97,8 @@ router.route('/listings')
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
 //route to listings/id
-router.route('/listings/:id')
-  .get(authenticatedUser, listingsController.show)
+// router.route('/listings/:id')
+//   .get(authenticatedUser, listingsController.show)
 
 // route to create a group chat
 router.route('/group')
