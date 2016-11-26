@@ -7,11 +7,17 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 #map {
-  height: 515px;
-  width: 500px;
+  height: 415px;
+  width: 400px;
   padding: 5px;
   float: right;
   margin-right: 110px;
+}
+
+#testDiv {
+  height: 100px;
+  width: 100px;
+  background-color: red;
 }
 /* Reset */
 
