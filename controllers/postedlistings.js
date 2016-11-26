@@ -6,5 +6,11 @@ module.exports = {
 }
 
 function index(req, res, next) {
-  res.render('postedlistings.ejs', { title: 'HomeMe', user: req.user });
-}
+  if (req.user) {
+    Listing.find({'createdBy': req.user}, function(err, listing) {
+      if (err) res.send(err);
+      res.json(listing);
+    })
+  };
+  res.render('postedlistings.ejs', { title: 'HomeMe', user: req.user })
+};

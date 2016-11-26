@@ -96,9 +96,15 @@ router.route('/listings')
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
+//route to favorited listings
+router.route('/listings/favorites')
+.get(mylistingsController.index)
+//route to posted listings
+router.route('/listings/postedlistings')
+.get(postedlistingsController.index)
 //route to listings/id
-// router.route('/listings/:id')
-//   .get(authenticatedUser, listingsController.show)
+router.route('/listings/:id')
+  .get(authenticatedUser, listingsController.show)
 
 // route to create a group chat
 router.route('/group')
@@ -109,14 +115,10 @@ router.route('/api/group')
   .get(groupsController.index)
   .post(groupsController.create);
 
-router.route('/listings/favorites')
-  .get(mylistingsController.index)
 
 router.route('/listings/favorites/:id')
   .post(mylistingsController.addFaves)
 
-router.route('/listings/postedlistings')
-  .get(postedlistingsController.index)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
