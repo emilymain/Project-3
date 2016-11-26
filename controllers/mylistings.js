@@ -11,7 +11,7 @@ function index(req, res, next) {
 }
 
 function addFaves(req, res, next) {
-  //pushes listings id form params into user favorites array
+  //pushes listings id from params into user favorites array
   req.user.favorites.push(req.params.id);
   req.user.save();
   User.find({'_id': req.user._id})
