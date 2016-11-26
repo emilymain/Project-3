@@ -16,8 +16,9 @@ var geocoder = NodeGeocoder(options);
 // require controllers
 var welcomeController = require('../controllers/welcome');
 var listingsController = require('../controllers/listings');
-var groupsController = require('../controllers/groups');
+var messagesController = require('../controllers/messages');
 var mylistingsController = require('../controllers/mylistings');
+var groupchatsController = require('../controllers/groupchats');
 
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
@@ -95,13 +96,29 @@ router.route('/listings')
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
 // route to create a group chat
-router.route('/group')
-  .get(authenticatedUser, groupsController.show)
 
-// API for groupchat
-router.route('/api/group')
-  .get(groupsController.index)
-  .post(groupsController.create)
+
+
+router.route('/groupchats')
+  .get(authenticatedUser, groupchatsController.home)
+
+router.route('/groupchats/:id')
+  .get(authenticatedUser, groupchatsController.show)
+
+router.route('/api/groupchats')
+  .get(authenticatedUser, groupchatsController.index)
+  .post(groupchatsController.create)
+
+router.route('/api/groupchats/:id')
+  .delete(groupchatsController.destroy)
+
+router.route('/api/groupchats/:id/messages')
+  .get(messagesController.index)
+  .post(messagesController.create)
+
+
+
+
 
 router.route('/listings/favorites')
   .get(mylistingsController.index)
