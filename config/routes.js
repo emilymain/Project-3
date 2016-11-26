@@ -111,7 +111,7 @@ router.route('/api/group')
 router.route('/listings/favorites')
   .get(mylistingsController.index)
 
-router.route('/listings /favorites/:id')
+router.route('/listings/favorites/:id')
   .post(mylistingsController.addFaves)
 
 // google OAuth login route
