@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('../partials/head') %>
+    <script rel="javascript" src="/js/groupchats.js"></script>
+  </head>
+  <body>
+    <%- include('../partials/navbar.ejs')  %>
+    <h1><%= title %></h1>
+
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" id="chatroomName" placeholder="Chatroom Name">
+        <input type="text" class="form-control" id="chatroomPassword" placeholder="Chatroom Password">
+      </div>
+      <button type="submit" id="createChat" class="btn btn-default">Create Chatroom</button>
+    </form>
+
+    <div class="modal fade" id="requiredFields">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p>Missing Required Fields</p>
+          </div><!-- modal-header -->
+          <div class="modal-body">
+            <p>Chatrooms require both a name and a password.</p>
+          </div><!-- modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div><!-- modal-footer -->
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+    </div><!-- modal fade -->
+
+    <div class="modal fade" id="enterPassword">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p>Enter this chatroom's password</p>
+          </div><!-- modal-header -->
+          <div class="modal-body">
+            <input type="text" class="form-control" id="passwordAttempt" placeholder="Chatroom Password">
+          </div><!-- modal-body -->
+          <div class="modal-footer">
+            <button id="enterAttempt" type="button" class="btn btn-primary" data-dismiss="modal">Enter Chatroom</button>
+          </div><!-- modal-footer -->
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+    </div><!-- modal fade -->
+
+    <h3>Chatrooms</h3>
+    <ul id="chatroomList">
+
+    </ul>
+
+  </body>
+</html>
