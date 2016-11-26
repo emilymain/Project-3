@@ -1,28 +1,28 @@
-$(function () {
-  // $('#button').click(function() {
-  //   $.ajax({
-  //     type: "POST",
-  //     url: '/listings/favorites/5834f2be052604125b04c823'
-  //   }).done(function(data) {
-  //     console.log(data);
-  //   })
-  // });
-
-//commented out because Michael wants to display the searched listings only, not all listings
-// append listings object to listings.ejs
-//   $.ajax({
-//     type: 'GET',
-//     url: '/api/listings'
-//   }).done(function(data){
-//     var listingsarray = data;
-//     listingsarray.forEach(function(listing){
-//       var listinghtml = $(`<li>${listing.formattedAddress}<br>
-//                             <a href="/listings/${listing._id}"><img src="${listing.imageurl}"></a>
-//                             </li>`);
-//       $('#listings').append(listinghtml);
-//     });
+// $(function() {
+//   $('#button').click(function() {
+//     $.ajax({
+//       type: "POST",
+//       url: '/listings/favorites/5834f2be052604125b04c823'
+//     }).done(function(data) {
+//       console.log(data);
+//     })
 //   });
-});
+//
+//   // commented out because Michael wants to display the searched listings only, not all listings
+//   // append listings object to listings.ejs
+//     $.ajax({
+//       type: 'GET',
+//       url: '/api/listings'
+//     }).done(function(data){
+//       var listingsarray = data;
+//       listingsarray.forEach(function(listing){
+//         var listinghtml = $(`<li>${listing.formattedAddress}<br>
+//                               <a href="/listings/${listing._id}"><img src="${listing.imageurl}"></a>
+//                               </li>`);
+//         $('#listings').append(listinghtml);
+//       });
+//     });
+// });
 
 
 
@@ -43,6 +43,7 @@ function initMap() {
   });
 
   $('#submitSearch').click(function(event) {
+    $( "article" ).remove( ".style3" );
     deleteMarkers();
     searchResult = [];
 
@@ -69,31 +70,27 @@ function initMap() {
     $.get("http://localhost:3000/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
 
-            var match = true;
+        var match = true;
 
-            if (params.city != data[i].city && params.city != "") {
-                match = false;
-            }
+        if (params.city != data[i].city && params.city != "") {
+          match = false;
+        }
 
-            //console.log('min price is', params.minPrice, 'listing at', data[i].price)
-            //minPrice
-            else if (data[i].price < params.minPrice && params.minPrice != "") {
-                match = false;
-            }
-            //maxPrice
-            else if (data[i].price > params.maxPrice && params.maxPrice != "") {
-              match = false;
-            }
-
-            else if (params.bedrooms != data[i].bedrooms && params.bedrooms != "") {
-              match = false;
-            }
-            else if (params.bathrooms != data[i].bathrooms && params.bathrooms != "") {
-              match = false;
-            }
-            else if (params.duration != data[i].duration && params.duration != "") {
-              match = false;
-            }
+        //console.log('min price is', params.minPrice, 'listing at', data[i].price)
+        //minPrice
+        else if (data[i].price < params.minPrice && params.minPrice != "") {
+          match = false;
+        }
+        //maxPrice
+        else if (data[i].price > params.maxPrice && params.maxPrice != "") {
+          match = false;
+        } else if (params.bedrooms != data[i].bedrooms && params.bedrooms != "") {
+          match = false;
+        } else if (params.bathrooms != data[i].bathrooms && params.bathrooms != "") {
+          match = false;
+        } else if (params.duration != data[i].duration && params.duration != "") {
+          match = false;
+        }
 
         if (match) {
           searchResult.push(data[i])
@@ -105,7 +102,16 @@ function initMap() {
         }
       }
       console.log(searchResult);
+      console.log(searchResult);
       console.log(searchResult.length);
+      for (var i = 0; i < 6; i++) {
+        console.log(searchResult[0].city);
+        // $(document).scrollTop("550");
+        $('body,html').animate({scrollTop: 556}, 800);
+        $('#listingArticle').append(
+          '<article class="style3"><span class="image"><img src="images/pic03.jpg" alt="" /></span><a href="www.google.com"><h2>' + searchResult[i].neighborhood + '</h2><div class="content"><p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p></div></a></article>'
+        )
+      };
     })
   });
 
@@ -144,3 +150,5 @@ function deleteMarkers() {
   clearMarkers();
   markers = [];
 }
+
+console.log(searchResult);
