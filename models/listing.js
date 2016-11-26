@@ -20,7 +20,7 @@ var listingSchema = new mongoose.Schema({
   pets: Boolean,
   furnished: Boolean,
   imageurl: String,
-  createdBy: {type:mongoose.Schema.Types.ObjectId, ref:'User'}
+  createdBy: {type: mongoose.Schema.Types.ObjectId, ref:'User'}
 });
 
 var Listing = mongoose.model('Listing', listingSchema);

@@ -1,6 +1,6 @@
 
 // $(function () {
-
+//
 //   $('#button').click(function() {
 //     $.ajax({
 //       type: "POST",
@@ -8,7 +8,7 @@
 //     }).done(function(data) {
 //       console.log(data);
 //     })
-
+//
 //   });
 //
 // commented out because Michael wants to display the searched listings only, not all listings
@@ -26,8 +26,6 @@
 //     });
 //   });
 // });
-
-
 
 var map;
 var markers = [];
