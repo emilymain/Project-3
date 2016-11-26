@@ -13,7 +13,7 @@ $(function() {
   }).then(
     function(jsonMessages) {
       // Iterate through our array of json messages
-			// if(!jsonMessages == {) {
+			// if(!jsonMessages.username == 'Antonio L. Rhee') {
 				jsonMessages.forEach(function(jsonMessage) {
 					// Create an html element for the single message
 					$messages.append($('<li>').text(`${jsonMessage.username}: ${jsonMessage.message}`));

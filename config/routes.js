@@ -101,7 +101,7 @@ router.route('/group')
 // API for groupchat
 router.route('/api/group')
   .get(groupsController.index)
-  .post(groupsController.create);
+  .post(groupsController.create)
 
 router.route('/listings/favorites')
   .get(mylistingsController.index)
