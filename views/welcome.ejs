@@ -42,17 +42,15 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<h2>Menu</h2>
-						<ul>
-
-							<% if (user) { %>
-							<li>Hello, <%= user.name %></li>
-							<li><a href="/listings">Search</a></li>
-							<li><a href="/listings/new">Post New Listing</a></li>
-							<li><a href="/group">My Group</a></li>
-							<li><a href="/logout">Logout</a></li>
-							<% } else { %>
-							<li><a href="/auth/google">Login with Google</a></li>
-							<% } %>
+							<ul>
+								<% if (user) { %>
+								<li><a href="/listings">Search</a></li>
+								<li><a href="/listings/new">Post New Listing</a></li>
+								<li><a href="/group">My Group</a></li>
+								<li><a href="/logout">Logout</a></li>
+								<% } else { %>
+								<li><a href="/auth/google">Login with Google</a></li>
+								<% } %>
 
 							<!-- <li><a href="index.html">Home</a></li>
 							<li><a href="generic.html">Ipsum veroeros</a></li>
