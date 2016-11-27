@@ -18,6 +18,7 @@ var welcomeController = require('../controllers/welcome');
 var listingsController = require('../controllers/listings');
 var messagesController = require('../controllers/messages');
 var mylistingsController = require('../controllers/mylistings');
+var postedlistingsController = require('../controllers/postedlistings');
 var groupchatsController = require('../controllers/groupchats');
 
 router.get('/api/listings', function(req, res, next) {
@@ -72,11 +73,40 @@ router.post('/api/listings', function(req, res, next) {
   })
 });
 
-router.delete('/api/listings', function(req, res, next) {
+router.route('/api/listings').delete(authenticatedUser, function(req, res, next) {
   var id = { "_id": req.body.id }
-  Listing.find(id).remove(function(err) {
-    if (err) console.log(err);
-    res.send(204);
+  console.log(req.user._id);
+  Listing.findOne(id, function(err, listing) {
+    console.log(listing);
+    if (err) throw err
+    else if (req.user._id.toString() == listing.createdBy) {
+      listing.remove(function(err) {
+        if (err) console.log('delete failed -> ', err);
+        res.send(204);
+      })
+    } else {
+      res.send(401);
+    }
+  })
+});
+
+router.route('/api/listings').put(authenticatedUser, function(req, res, next) {
+  console.log('here is body', req.body)
+  var id = { "_id": req.body.id }
+  console.log('searching for: ', id);
+  Listing.findOne(id, function(err, listing) {
+    console.log('put ->', listing);
+    console.log('req body ->', req.body);
+    if (err) throw err
+    else if (req.user._id.toString() == listing.createdBy) {
+      console.log('OKAY GOING IN FOR UPDATE');
+      Listing.findOneAndUpdate({_id: req.body.id}, req.body, function(err) {
+        if (err) console.log('update failed -> ', err);
+        res.send(204);
+      })
+    } else {
+      res.send(401);
+    }
   })
 });
 
@@ -96,13 +126,22 @@ router.route('/listings')
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
-// route to favorited listings
+
+// HEAD from
+
+//route to favorited listings
 router.route('/listings/favorites')
-.get(mylistingsController.index)
+  .get(authenticatedUser, mylistingsController.index)
+//route to posted listings
+router.route('/listings/postedlistings')
+  .get(authenticatedUser, postedlistingsController.index)
+//route to listings/id
+// =======
 // posts listings to favorited listings array
 router.route('/listings/favorites/:id')
-.post(mylistingsController.addFaves)
+  .post(mylistingsController.addFaves)
 // route to listings/id
+// >>>>>>> a14364a78da230029c188736142aaea22f98e02a
 router.route('/listings/:id')
   .get(authenticatedUser, listingsController.show)
 
@@ -123,7 +162,6 @@ router.route('/api/groupchats/:id')
 router.route('/api/groupchats/:id/messages')
   .get(messagesController.index)
   .post(messagesController.create)
-
 
 
 // google OAuth login route
