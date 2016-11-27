@@ -1,17 +1,12 @@
-var Group = require('../models/group');
+var Message = require('../models/message');
 
 module.exports = {
-  show: show,
   index: index,
   create: create,
 }
 
-function show(req, res, next) {
-  res.render('group.ejs', { title: 'HomeMe', user: req.user });
-}
-
 function index(req, res, next) {
-  Group.find({}, function(err, messages) {
+  Message.find({}, function(err, messages) {
     if (err) next (err);
 
     res.json(messages);
@@ -19,7 +14,7 @@ function index(req, res, next) {
 }
 
 function create(req, res, next) {
-  var newMessage = new Group(req.body);
+  var newMessage = new Message(req.body);
   newMessage.save(function(err, savedMessage) {
     if (err) next (err);
 

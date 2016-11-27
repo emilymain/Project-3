@@ -1,31 +1,24 @@
+$(function () {
 
-// $(function () {
-//
-//   $('#button').click(function() {
-//     $.ajax({
-//       type: "POST",
-//       url: '/listings/favorites/5834f2be052604125b04c823'
-//     }).done(function(data) {
-//       console.log(data);
-//     })
-//
-//   });
-//
-// commented out because Michael wants to display the searched listings only, not all listings
-// append listings object to listings.ejs
-//   $.ajax({
-//     type: 'GET',
-//     url: '/api/listings'
-//   }).done(function(data){
-//     var listingsarray = data;
-//     listingsarray.forEach(function(listing){
-//       var listinghtml = $(`<li>${listing.formattedAddress}<br>
-//                             <a href="/listings/${listing._id}"><img src="${listing.imageurl}"></a>
-//                             </li>`);
-//       $('#listings').append(listinghtml);
-//     });
-//   });
-// });
+$.get("http://localhost:3000/api/listings", {}, function(data) {
+  for(var i = 0; i < data.length; i++) {
+    console.log(data[i]);
+    $(`<div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail"><img src="${data[i].imageurl}" alt="...">
+            <div class="caption">
+              <h3 id="address">${data[i].streetNumber + ' ' + data[i].streetName}</h3>
+              <p>${data[i].neighborhood + ', ' + data[i].zipcode}</p>
+              <p>${data[i].bedrooms + ' Bed, ' + data[i].bathrooms + ' Bath'}</p>
+              <p>${'$' + data[i].price + '/mo'} </p>
+            </div>
+          </div>
+        </div>
+      </div>`).appendTo('body');
+  }
+});
+
+});
 
 var map;
 var markers = [];

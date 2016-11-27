@@ -16,8 +16,9 @@ var geocoder = NodeGeocoder(options);
 // require controllers
 var welcomeController = require('../controllers/welcome');
 var listingsController = require('../controllers/listings');
-var groupsController = require('../controllers/groups');
+var messagesController = require('../controllers/messages');
 var mylistingsController = require('../controllers/mylistings');
+var groupchatsController = require('../controllers/groupchats');
 
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
@@ -95,25 +96,35 @@ router.route('/listings')
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
+// route to favorited listings
 router.route('/listings/favorites')
-  .get(mylistingsController.index)
+.get(mylistingsController.index)
+// posts listings to favorited listings array
+router.route('/listings/favorites/:id')
+.post(mylistingsController.addFaves)
 // route to listings/id
 router.route('/listings/:id')
   .get(authenticatedUser, listingsController.show)
 
-// route to create a group chat
-router.route('/group')
-  .get(authenticatedUser, groupsController.show)
 
-// API for groupchat
-router.route('/api/group')
-  .get(groupsController.index)
-  .post(groupsController.create);
+// route to create a groupchat
+router.route('/groupchats')
+  .get(authenticatedUser, groupchatsController.home)
+// route to speicfic groupchat
+router.route('/groupchats/:id')
+  .get(authenticatedUser, groupchatsController.show)
+// api for groupchats
+router.route('/api/groupchats')
+  .get(authenticatedUser, groupchatsController.index)
+  .post(groupchatsController.create)
+router.route('/api/groupchats/:id')
+  .delete(groupchatsController.destroy)
+
+router.route('/api/groupchats/:id/messages')
+  .get(messagesController.index)
+  .post(messagesController.create)
 
 
-
-router.route('/listings/favorites/:id')
-  .post(mylistingsController.addFaves)
 
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
