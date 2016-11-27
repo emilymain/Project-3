@@ -61,7 +61,20 @@
             <div id="main">
                 <div class="inner">
                     <section id="listingArticle" class="tiles">
-
+                      <% for(var i = 0; i < listings.length; i++) {%>
+                       <article class="style3">
+                         <span class="image">
+                           <img style="height: 200px;" src="<%= listings[i].imageurl %>" alt="" />
+                         </span>
+                         <a href="www.google.com">
+                           <h2><%= listings[i].neighborhood %>
+                           </h2>
+                           <div class="content">
+                             <p><%= listings[i].formattedAddress %></p>
+                           </div>
+                         </a>
+                       </article>
+                      <% } %>
 
                     </section>
                 </div>
