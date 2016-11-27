@@ -1,4 +1,6 @@
-// $(function() {
+
+// $(function () {
+//
 //   $('#button').click(function() {
 //     $.ajax({
 //       type: "POST",
@@ -6,25 +8,24 @@
 //     }).done(function(data) {
 //       console.log(data);
 //     })
+//
 //   });
 //
-//   // commented out because Michael wants to display the searched listings only, not all listings
-//   // append listings object to listings.ejs
-//     $.ajax({
-//       type: 'GET',
-//       url: '/api/listings'
-//     }).done(function(data){
-//       var listingsarray = data;
-//       listingsarray.forEach(function(listing){
-//         var listinghtml = $(`<li>${listing.formattedAddress}<br>
-//                               <a href="/listings/${listing._id}"><img src="${listing.imageurl}"></a>
-//                               </li>`);
-//         $('#listings').append(listinghtml);
-//       });
+// commented out because Michael wants to display the searched listings only, not all listings
+// append listings object to listings.ejs
+//   $.ajax({
+//     type: 'GET',
+//     url: '/api/listings'
+//   }).done(function(data){
+//     var listingsarray = data;
+//     listingsarray.forEach(function(listing){
+//       var listinghtml = $(`<li>${listing.formattedAddress}<br>
+//                             <a href="/listings/${listing._id}"><img src="${listing.imageurl}"></a>
+//                             </li>`);
+//       $('#listings').append(listinghtml);
 //     });
+//   });
 // });
-
-
 
 var map;
 var markers = [];
@@ -104,12 +105,12 @@ function initMap() {
       console.log(searchResult);
       console.log(searchResult);
       console.log(searchResult.length);
-      for (var i = 0; i < 6; i++) {
+      for (var i = 0; i < searchResult.length; i++) {
         console.log(searchResult[0].city);
         // $(document).scrollTop("550");
         $('body,html').animate({scrollTop: 556}, 800);
         $('#listingArticle').append(
-          '<article class="style3"><span class="image"><img src="images/pic03.jpg" alt="" /></span><a href="www.google.com"><h2>' + searchResult[i].neighborhood + '</h2><div class="content"><p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p></div></a></article>'
+          `<article class="style3"><span class="image"><img style="height: 200px;" src="${searchResult[i].imageurl}" alt="" /></span><a href="www.google.com"><h2>${searchResult[i].neighborhood}</h2><div class="content"><p>${searchResult[i].formattedAddress}</p></div></a></article>`
         )
       };
     })

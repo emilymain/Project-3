@@ -95,7 +95,9 @@ router.route('/listings')
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
-//route to listings/id
+router.route('/listings/favorites')
+  .get(mylistingsController.index)
+// route to listings/id
 router.route('/listings/:id')
   .get(authenticatedUser, listingsController.show)
 
@@ -108,10 +110,9 @@ router.route('/api/group')
   .get(groupsController.index)
   .post(groupsController.create);
 
-router.route('/listings/favorites')
-  .get(mylistingsController.index)
 
-router.route('/listings /favorites/:id')
+
+router.route('/listings/favorites/:id')
   .post(mylistingsController.addFaves)
 
 // google OAuth login route
