@@ -6,19 +6,21 @@ $(function() {
 
 	var socket = io();
 
-	// Grab all todos from our db
+	// Grab all messages from our db
   $.ajax({
     type: "GET",
-    url: "/api/group"
+    url: "/api/groupchats/:id/messages"
   }).then(
     function(jsonMessages) {
       // Iterate through our array of json messages
-			// if(!jsonMessages == {) {
-				jsonMessages.forEach(function(jsonMessage) {
+			jsonMessages.forEach(function(jsonMessage) {
+				if($('#passwordAttempt').val() == jsonGroupchat.chatPassword) {
 					// Create an html element for the single message
 					$messages.append($('<li>').text(`${jsonMessage.username}: ${jsonMessage.message}`));
-				});
-			// }
+				} else {
+					location.href = "/groupchats"
+				}
+			});
     }
   );
 
@@ -31,10 +33,10 @@ $(function() {
 			message: $m.val()
 		}
 
-		// Use AJAX to add the new todo to our db
+		// Use AJAX to add the new message to our db
 		$.ajax({
 			method: "POST",
-			url: "/api/group",
+			url: "/api/groupchats/:id/messages",
 			data: message
 		}).then(
 			function(jsonMessage) {

@@ -16,9 +16,10 @@ var geocoder = NodeGeocoder(options);
 // require controllers
 var welcomeController = require('../controllers/welcome');
 var listingsController = require('../controllers/listings');
-var groupsController = require('../controllers/groups');
+var messagesController = require('../controllers/messages');
 var mylistingsController = require('../controllers/mylistings');
 var postedlistingsController = require('../controllers/postedlistings');
+var groupchatsController = require('../controllers/groupchats');
 
 router.get('/api/listings', function(req, res, next) {
   if (req.query.id) {
@@ -125,6 +126,9 @@ router.route('/listings')
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
+
+// HEAD from
+
 //route to favorited listings
 router.route('/listings/favorites')
   .get(authenticatedUser, mylistingsController.index)
@@ -132,21 +136,32 @@ router.route('/listings/favorites')
 router.route('/listings/postedlistings')
   .get(authenticatedUser, postedlistingsController.index)
 //route to listings/id
+// =======
+// posts listings to favorited listings array
+router.route('/listings/favorites/:id')
+  .post(mylistingsController.addFaves)
+// route to listings/id
+// >>>>>>> a14364a78da230029c188736142aaea22f98e02a
 router.route('/listings/:id')
   .get(authenticatedUser, listingsController.show)
 
-// route to create a group chat
-router.route('/group')
-  .get(authenticatedUser, groupsController.show)
 
-// API for groupchat
-router.route('/api/group')
-  .get(groupsController.index)
-  .post(groupsController.create);
+// route to create a groupchat
+router.route('/groupchats')
+  .get(authenticatedUser, groupchatsController.home)
+// route to speicfic groupchat
+router.route('/groupchats/:id')
+  .get(authenticatedUser, groupchatsController.show)
+// api for groupchats
+router.route('/api/groupchats')
+  .get(authenticatedUser, groupchatsController.index)
+  .post(groupchatsController.create)
+router.route('/api/groupchats/:id')
+  .delete(groupchatsController.destroy)
 
-
-router.route('/listings/favorites/:id')
-  .post(mylistingsController.addFaves)
+router.route('/api/groupchats/:id/messages')
+  .get(messagesController.index)
+  .post(messagesController.create)
 
 
 // google OAuth login route

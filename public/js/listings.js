@@ -1,31 +1,3 @@
-// $(function() {
-//   $('#button').click(function() {
-//     $.ajax({
-//       type: "POST",
-//       url: '/listings/favorites/5834f2be052604125b04c823'
-//     }).done(function(data) {
-//       console.log(data);
-//     })
-//   });
-//
-//   // commented out because Michael wants to display the searched listings only, not all listings
-//   // append listings object to listings.ejs
-//     $.ajax({
-//       type: 'GET',
-//       url: '/api/listings'
-//     }).done(function(data){
-//       var listingsarray = data;
-//       listingsarray.forEach(function(listing){
-//         var listinghtml = $(`<li>${listing.formattedAddress}<br>
-//                               <a href="/listings/${listing._id}"><img src="${listing.imageurl}"></a>
-//                               </li>`);
-//         $('#listings').append(listinghtml);
-//       });
-//     });
-// });
-
-
-
 var map;
 var markers = [];
 var searchResult = [];
@@ -75,8 +47,6 @@ function initMap() {
         if (params.city != data[i].city && params.city != "") {
           match = false;
         }
-
-        //console.log('min price is', params.minPrice, 'listing at', data[i].price)
         //minPrice
         else if (data[i].price < params.minPrice && params.minPrice != "") {
           match = false;
@@ -105,8 +75,6 @@ function initMap() {
       console.log(searchResult);
       console.log(searchResult.length);
       for (var i = 0; i < searchResult.length; i++) {
-        // $(document).scrollTop("550");
-        // $('body,html').animate({scrollTop: 556}, 800);
         $('#listingArticle').append(
          `<article class="style3"><span class="image"><img style="height: 280px;" src="${searchResult[i].imageurl}" alt="" /></span><a href=/listings/${searchResult[i]._id}><h2>${searchResult[i].neighborhood}</h2><div class="content"><p>${searchResult[i].formattedAddress}</p></div></a></article>`
        )

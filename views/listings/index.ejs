@@ -26,35 +26,32 @@
 <body>
     <!-- Wrapper -->
     <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <!-- <a href="index.html" class="logo">
+              <span class="symbol"><img src="images/logo.svg" alt="logo" /></span><span class="title">home Me</span>
+          </a> -->
+          <!-- Nav -->
+          <nav>
+              <ul>
+                  <li><a href="#menu"><%= user.name %></a></li>
+              </ul>
+          </nav>
+        </div>
+      </header>
 
-        <!-- Header -->
-        <header id="header">
-            <div class="inner">
-
-                <!-- Logo -->
-                <!-- <a href="index.html" class="logo">
-                    <span class="symbol"><img src="images/logo.svg" alt="logo" /></span><span class="title">home Me</span>
-                </a> -->
-
-                <!-- Nav -->
-                <nav>
-                    <ul>
-                        <li><a href="#menu">Menu</a></li>
-                    </ul>
-                </nav>
-
-            </div>
-        </header>
-
-        <!-- Menu -->
-        <nav id="menu">
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="index.html">Search</a></li>
-                <li><a href="listings/new">Post New Listing</a></li>
-                <li><a href="generic.html">My Group</a></li>
-            </ul>
-        </nav>
+      <!-- Menu -->
+      <nav id="menu">
+        <h2><%= user.name %></h2>
+          <ul>
+            <li><a href="/listings">Search</a></li>
+            <li><a href="/listings/new">Post New Listing</a></li>
+            <li><a href="/groupchats">My Groups</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+      </nav>
 
         <!-- Main -->
         <div id="main">
