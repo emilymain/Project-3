@@ -126,9 +126,6 @@ router.route('/listings')
 // route to post a new listing
 router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
-
-// HEAD from
-
 //route to favorited listings
 router.route('/listings/favorites')
   .get(authenticatedUser, mylistingsController.index)
@@ -136,14 +133,11 @@ router.route('/listings/favorites')
 router.route('/listings/postedlistings')
   .get(authenticatedUser, postedlistingsController.index)
 //route to listings/id
-// =======
+router.route('/listings/:id')
+.get(authenticatedUser, listingsController.show)
 // posts listings to favorited listings array
 router.route('/listings/favorites/:id')
   .post(mylistingsController.addFaves)
-// route to listings/id
-// >>>>>>> a14364a78da230029c188736142aaea22f98e02a
-router.route('/listings/:id')
-  .get(authenticatedUser, listingsController.show)
 
 
 // route to create a groupchat
