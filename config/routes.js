@@ -98,10 +98,10 @@ router.route('/listings/new')
   .get(authenticatedUser, listingsController.newListing)
 //route to favorited listings
 router.route('/listings/favorites')
-.get(mylistingsController.index)
+  .get(authenticatedUser, mylistingsController.index)
 //route to posted listings
 router.route('/listings/postedlistings')
-.get(postedlistingsController.index)
+  .get(authenticatedUser, postedlistingsController.index)
 //route to listings/id
 router.route('/listings/:id')
   .get(authenticatedUser, listingsController.show)
