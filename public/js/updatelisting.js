@@ -41,6 +41,9 @@ function uploadFile(file, signedRequest, url){
   };
   xhr.send(file);
 }
+
+console.log('asdfasdf ->', listingId);
+
 $('#submitListing').click(function(event) {
 
   console.log('jQuery works')
@@ -70,10 +73,28 @@ $('#submitListing').click(function(event) {
     "imageurl": imageurl
 	 }
 
-	 console.log(params);
+   var putData = {
+     'id': listingId,
+   }
 
-  $.post( "/api/listings", params, "json").done(function(){
-    window.location.href="/listings"
+
+   for (var key in params) {
+     if (params[key] !== "") putData[key] = params[key];
+   }
+
+	 console.log(params);
+   console.log(putData);
+
+  // $.post( "http://localhost:3000/api/listings", params, "json").done(function(){
+  //   window.location.href="/listings"
+  // });
+
+  $.ajax({
+    type: "PUT",
+    url: "/api/listings",
+    data: putData
+  }).done(function(){
+    window.location.href="/listings/postedlistings"
   });
 
   event.preventDefault();

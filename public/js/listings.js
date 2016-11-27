@@ -67,7 +67,7 @@ function initMap() {
       "furnished": furnished
     }
 
-    $.get("http://localhost:3000/api/listings", {}, function(data) {
+    $.get("/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
 
         var match = true;
