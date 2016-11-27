@@ -105,7 +105,7 @@ function initMap() {
       console.log(searchResult);
       console.log(searchResult);
       console.log(searchResult.length);
-      for (var i = 0; i < 6; i++) {
+      for (var i = 0; i < searchResult.length; i++) {
         console.log(searchResult[0].city);
         // $(document).scrollTop("550");
         $('body,html').animate({scrollTop: 556}, 800);
