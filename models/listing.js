@@ -19,7 +19,8 @@ var listingSchema = new mongoose.Schema({
   duration: Number,
   pets: Boolean,
   furnished: Boolean,
-  imageurl: String
+  imageurl: String,
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 var Listing = mongoose.model('Listing', listingSchema);

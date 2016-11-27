@@ -14,8 +14,12 @@ $(function() {
     function(jsonMessages) {
       // Iterate through our array of json messages
 			jsonMessages.forEach(function(jsonMessage) {
-				// Create an html element for the single message
-				$messages.append($('<li>').text(`${jsonMessage.username}: ${jsonMessage.message}`));
+				if($('#passwordAttempt').val() == jsonGroupchat.chatPassword) {
+					// Create an html element for the single message
+					$messages.append($('<li>').text(`${jsonMessage.username}: ${jsonMessage.message}`));
+				} else {
+					location.href = "/groupchats"
+				}
 			});
     }
   );

@@ -1,12 +1,4 @@
 $(function () {
-  // $('#button').click(function() {
-  //   $.ajax({
-  //     type: "POST",
-  //     url: '/listings/favorites/5834f2be052604125b04c823'
-  //   }).done(function(data) {
-  //     console.log(data);
-  //   })
-  // });
 
 //commented out because Michael wants to display the searched listings only, not all listings
 // append listings object to listings.ejs
