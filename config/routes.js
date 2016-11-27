@@ -72,11 +72,20 @@ router.post('/api/listings', function(req, res, next) {
   })
 });
 
-router.delete('/api/listings', function(req, res, next) {
+router.route('/api/listings').delete(authenticatedUser, function(req, res, next) {
   var id = { "_id": req.body.id }
-  Listing.find(id).remove(function(err) {
-    if (err) console.log(err);
-    res.send(204);
+  console.log(req.user._id);
+  Listing.findOne(id, function(err, listing) {
+    console.log(listing);
+    if (err) throw err
+    else if (req.user._id.toString() == listing.createdBy) {
+      listing.remove(function(err) {
+        if (err) console.log('delete failed -> ', err);
+        res.send(204);
+      })
+    } else {
+      res.send(401);
+    }
   })
 });
 
