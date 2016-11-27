@@ -4,11 +4,22 @@
     <%- include('./partials/head') %>
     <link rel='stylesheet' href='/css/mylistings.css' />
     <script rel='javascript' src='/js/mylistings.js'></script>
-    <title>My Listings</title>
+    <title>My Favorites</title>
   </head>
 
   <body>
   <%- include('./partials/navbar.ejs')  %>
   <h1>Favorites</h1>
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="https://projectthreebucket.s3.amazonaws.com/img_1049_1024.jpg" alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+          <p>User</p>
+        </div>
+      </div>
+    </div>
+  </div>
   </body>
 </html>

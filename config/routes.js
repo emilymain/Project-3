@@ -126,9 +126,6 @@ router.route('/api/groupchats/:id/messages')
 
 
 
-
-
-
 // google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',
