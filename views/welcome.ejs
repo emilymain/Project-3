@@ -42,17 +42,15 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<h2>Menu</h2>
-						<ul>
-
-							<% if (user) { %>
-							<li>Hello, <%= user.name %></li>
-							<li><a href="/listings">Search</a></li>
-							<li><a href="/listings/new">Post New Listing</a></li>
-							<li><a href="/group">My Group</a></li>
-							<li><a href="/logout">Logout</a></li>
-							<% } else { %>
-							<li><a href="/auth/google">Login with Google</a></li>
-							<% } %>
+							<ul>
+								<% if (user) { %>
+								<li><a href="/listings">Search</a></li>
+								<li><a href="/listings/new">Post New Listing</a></li>
+								<li><a href="/group">My Group</a></li>
+								<li><a href="/logout">Logout</a></li>
+								<% } else { %>
+								<li><a href="/auth/google">Login with Google</a></li>
+								<% } %>
 
 							<!-- <li><a href="index.html">Home</a></li>
 							<li><a href="generic.html">Ipsum veroeros</a></li>
@@ -66,9 +64,9 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>Welcome to HomeMe<br />
+								<h1>Welcome to home_Me<br />
 								a place for renters to find their perfect home.</h1>
-								<p>Whether you're looking alone or with a group. HomeMe will help you find the perfect place to live and make it easier to communicate as you search</p>
+								<p>Whether you're looking alone or with a group. home_Me will help you find the perfect place to live and make it easier to communicate as you search</p>
 							</header>
 						</div>
 					</div>

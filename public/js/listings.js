@@ -1,25 +1,3 @@
-// $(function () {
-//
-// $.get("http://localhost:3000/api/listings", {}, function(data) {
-//   for(var i = 0; i < data.length; i++) {
-//     console.log(data[i]);
-//     $(`<div class="row">
-//         <div class="col-sm-6 col-md-4">
-//           <div class="thumbnail"><img src="${data[i].imageurl}" alt="...">
-//             <div class="caption">
-//               <h3 id="address">${data[i].streetNumber + ' ' + data[i].streetName}</h3>
-//               <p>${data[i].neighborhood + ', ' + data[i].zipcode}</p>
-//               <p>${data[i].bedrooms + ' Bed, ' + data[i].bathrooms + ' Bath'}</p>
-//               <p>${'$' + data[i].price + '/mo'} </p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>`).appendTo('body');
-//   }
-// });
-//
-// });
-
 var map;
 var markers = [];
 var searchResult = [];
@@ -47,8 +25,8 @@ function initMap() {
     var bedrooms = Number($('#bedrooms').val());
     var bathrooms = Number($('#bathrooms').val());
     var duration = Number($('#duration').val());
-    var pets = ($('#pets').val());
-    var furnished = ($('#furnished').val());
+    var pets = $('#pets').val();
+    var furnished = $('#furnished').val();
 
     var params = {
       "city": city,
@@ -61,7 +39,7 @@ function initMap() {
       "furnished": furnished
     }
 
-    $.get("http://localhost:3000/api/listings", {}, function(data) {
+    $.get("/api/listings", {}, function(data) {
       for (var i = 0; i < data.length; i++) {
 
         var match = true;
@@ -69,8 +47,6 @@ function initMap() {
         if (params.city != data[i].city && params.city != "") {
           match = false;
         }
-
-        //console.log('min price is', params.minPrice, 'listing at', data[i].price)
         //minPrice
         else if (data[i].price < params.minPrice && params.minPrice != "") {
           match = false;
@@ -99,13 +75,11 @@ function initMap() {
       console.log(searchResult);
       console.log(searchResult.length);
       for (var i = 0; i < searchResult.length; i++) {
-        console.log(searchResult[0].city);
-        // $(document).scrollTop("550");
-        $('body,html').animate({scrollTop: 556}, 800);
         $('#listingArticle').append(
-          `<article class="style3"><span class="image"><img style="height: 200px;" src="${searchResult[i].imageurl}" alt="" /></span><a href="www.google.com"><h2>${searchResult[i].neighborhood}</h2><div class="content"><p>${searchResult[i].formattedAddress}</p></div></a></article>`
-        )
+         `<article class="style3"><span class="image"><img style="height: 280px;" src="${searchResult[i].imageurl}" alt="" /></span><a href=/listings/${searchResult[i]._id}><h2>${searchResult[i].neighborhood}</h2><div class="content"><p>${searchResult[i].formattedAddress}</p></div></a></article>`
+       )
       };
+      $('body,html').animate({scrollTop: 1150}, 1150);
     })
   });
 
