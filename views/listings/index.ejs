@@ -7,6 +7,7 @@
 <html>
 <head>
     <title>home_Me</title>
+    <link rel="stylesheet" href="/css/navbar.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -22,37 +23,15 @@
     <!-- Wrapper -->
     <div id="wrapper">
       <!-- Header -->
-      <header id="header">
-        <div class="inner">
-          <!-- Logo -->
-          <!-- <a href="index.html" class="logo">
-              <span class="symbol"><img src="images/logo.svg" alt="logo" /></span><span class="title">home Me</span>
-          </a> -->
-          <!-- Nav -->
-          <nav>
-              <ul>
-                  <li><a href="#menu"><%= user.name %></a></li>
-              </ul>
-          </nav>
-        </div>
-      </header>
-      <!-- Menu -->
-      <nav id="menu">
-        <h2><%= user.name %></h2>
-          <ul>
-            <li><a href="/listings">Search</a></li>
-            <li><a href="/listings/new">Post New Listing</a></li>
-            <li><a href="/groupchats">My Groups</a></li>
-            <li><a href="/logout">Logout</a></li>
-          </ul>
-      </nav>
+      <%- include('../partials/navbar.ejs')  %>
       <!-- Main -->
       <div id="main">
           <div class="inner">
               <!-- <h1>search</h1> -->
               <section>
                   <div class="row">
-                      <div class="6u$ 12u$(medium)"></div>
+                      <div class="6u$ 12u$(medium)">
+                      </div>
                   </div>
                   <section>
                       <form method="post" action="#">
@@ -87,12 +66,12 @@
                   <div class="row">
                       <div class="6u 12u$(medium)">
                           <ul class="actions">
-                              <li><a href="#" class="button special" id="submitSearch">Search</a></li>
+                              <li><a href="#" class="button special" id="submitSearch">search</a></li>
                           </ul>
                       </div>
-                  </div>
               </section>
               <div class="container" id="map"></div>
+                  </div>
           </div>
           <div id="main">
               <div class="inner">
@@ -102,7 +81,7 @@
           </div>
           <!-- Footer -->
           <footer id="footer">
-              <div class="inner container">
+              <div class="inner">
                   <section>
                       <ul class="icons">
                           <li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
